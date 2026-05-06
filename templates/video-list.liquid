@@ -1,0 +1,75 @@
+<section name="video-nav" class="relative py-5 bg-base-200 mt-[74px]">
+  <div class="container relative">
+    <div class="grid md:grid-cols-12 grid-cols-1 gap-2 items-center">
+      <div class="lg:col-span-5 md:col-span-4">
+        <h3 class="text-2xl md:leading-normal leading-normal font-semibold">Courses</h3>
+      </div>
+      <div class="lg:col-span-7 md:col-span-8 md:text-end">
+        {% render 'breadcrumb', breadcrumb: page.breadcrumb %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section name="video-list" class="container relative py-12">
+  {% assign pages = page.pages_in_list | order_by: "-published_at" %}
+  {% assign tag_param = params.tag | presence %}
+  {% if tag_param %}
+    {% query pages from pages %}
+    {
+      "where": {
+        "settings.tags_contains_any": ["{{ tag_param | escape_once }}"]
+      }
+    }
+    {% endquery %}
+  {% endif %}
+  {% paginate_tag pages, as: 'items', per: 12 %}
+    {% if paginate.total_count > 0 %}
+      {% if tag_param %}
+        <h3 class="text-2xl md:leading-normal leading-normal font-semibold">Tag: {{ tag_param }}</h3>
+      {% endif %}
+      <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-6">
+        {% assign default_cover = page.settings.default_cover %}
+        {% for item in items %}
+          {% render 'video/card', page: item, default_cover: default_cover %}
+        {% endfor %}
+      </div>
+      <div class="grid md:grid-cols-12 grid-cols-1 mt-6">
+        <div class="md:col-span-12 text-center">
+          {% render 'paginate', paginate: paginate %}
+        </div>
+      </div>
+    {% else %}
+      {% render 'empty',
+          title: 't:schema.templates.video-list.empty.title',
+          description: 't:schema.templates.video-list.empty.description',
+          icon: 'video',
+          button_text: 't:schema.templates.video-list.empty.button_text',
+          button_url: '/'
+      %}
+    {% endif %}
+  {% endpaginate_tag %}
+</section>
+  
+{% render 'video/subscription' %}
+
+{% schema %}
+{
+  "name": "t:schema.templates.video-list.name",
+  "description": "t:schema.templates.video-list.description",
+  "thumb_url": "",
+  "sub_page_templates": [
+    "video-page"
+  ],
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "default_cover",
+      "height": 256,
+      "ratio": "16:9",
+      "label": "t:schema.templates.video-list.settings.default_cover.label",
+      "info": "t:schema.templates.video-list.settings.default_cover.info"
+    }
+  ]
+}
+{% endschema %}

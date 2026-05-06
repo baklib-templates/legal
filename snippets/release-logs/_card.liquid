@@ -1,0 +1,34 @@
+{% comment %}
+更新日志列表页的卡片
+参数：
+- page: 更新日志页面
+{% endcomment %}
+<article
+    class="relative py-5 pr-4 pl-12 sm:pl-28 group before:absolute before:left-8 sm:before:left-24 before:right-0 before:inset-y-0 before:bg-base-100 dark:before:bg-base-200 before:rounded-lg before:shadow before:shadow-base-content/10 before:-z-10 even:before:opacity-50">
+    <!-- Vertical line (::before) ~ Date ~ Title ~ Circle marker (::after) -->
+    <header
+        class="flex flex-col sm:flex-row items-start mb-2 group-last:before:hidden before:absolute before:left-2 sm:before:left-0 before:h-[calc(100%+1rem)] before:pl-px before:bg-primary/40 dark:before:bg-primary/20 sm:before:ml-[4.5rem] before:self-start before:-translate-x-1/2 before:translate-y-3 after:absolute after:left-2 sm:after:left-0 after:w-2 after:h-2 after:bg-primary after:rounded-full sm:after:ml-[4.5rem] after:-translate-x-1/2 after:translate-y-2">
+        <time class="left-0 badge badge-primary sm:absolute sm:mb-0"> {{ page.published_at | date: "%m-%d" }}</time>
+        <h2 class="text-lg font-semibold leading-6 text-base-content font-inter-tight">
+            <a href="{{ page.path }}">{{ page.link_text }}</a>
+        </h2>
+    </header>
+    <!-- Content -->
+    <div class="my-3">
+        <p class="text-base-content/60">{{ page.settings.description }}</p>
+        <div class="flex items-center my-3 space-x-2 text-xs font-light shrink-0">
+            {% for tag in page.settings.tags %}
+            <a href="{{ tag.path }}" style="background-color: {{ tag.color }}"
+                class="px-2 py-1 text-xs text-white rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2">
+                {{ tag.name }}
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+    <footer class="flex items-center space-x-3">
+        <img class="rounded-full shrink-0"
+            src="{{ page.author.avatar_url | default: 'https://b22a60e4ac72.baklib.com/-/avatars/eyJfcmFpbHMiOnsiZGF0YSI6ImdpZDovL2Jha2xpYi9Pcmdhbml6YXRpb24vODEyP2V4cGlyZXNfaW5cdTAwMjZhdmF0YXJfdW5pcXVlX3Rva2VuPTIwMjUtMDEtMTQrMTElM0EwMiUzQTQ4KyUyQjA4MDAtMTE2NSIsInB1ciI6ImRlZmF1bHQifX0=--bd7442f6225104eaa0373356cb23bb5b13de31ad' }}"
+            width="32" height="32" alt="Author 01">
+        <div class="text-sm font-medium text-base-content"> {{ page.author.name }} </div>
+    </footer>
+</article>

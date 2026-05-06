@@ -1,0 +1,57 @@
+{% comment %} 
+ 视频课程卡片显示, 用于视频课程列表页
+ 参数:
+  - page: 视频课程页面数据
+  - default_cover: 默认封面图
+{% endcomment %}
+
+{% assign default_cover = default_cover | presence %}
+{% unless default_cover %}
+  {% assign default_cover = "images/demos/video/video-preview-01.jpg" | asset_url %}
+{% endunless %}
+
+<div class="group bg-base-100 rounded-md shadow-md hover:shadow-lg shadow-base-200 hover:shadow-base-300 transition duration-500">
+  <div class="p-3 pb-0 relative">
+    <div class="relative overflow-hidden rounded-md">
+      <img class="group-hover:scale-105 duration-500 w-full aspect-video object-cover object-center" src="{{ page.settings.cover | default: default_cover }}">
+    </div>
+    <div class="absolute start-6 top-6">
+      {% for tag in page.settings.tags %}
+        <a class="bg-primary text-white text-[12px] px-2.5 py-1 rounded-md h-4 mx-[2px]" href="?tag={{ tag.name }}">{{ tag.name }}</a>
+      {% endfor %}
+    </div>
+    {%- if page.settings.duration -%}
+      <span class="absolute bg-black/50 rounded-md py-0.5 px-1 top-6 end-6 text-slate-50 text-xs flex items-center">
+        <i class="ri-timer-line text-slate-50 mr-0.5"></i>
+        {{ page.settings.duration }}
+      </span>
+    {%- endif -%}
+  </div>
+  <div class="p-6">
+    <div class="flex mb-3 space-x-3">
+      <span class="text-base-content/50 text-sm flex items-center">
+        <i class="ri-time-line text-base-content mr-0.5"></i>
+        {{ page.published_at | date: "%Y-%m-%d" }}
+      </span>
+      <span class="text-base-content/50 text-sm flex items-center">
+        <i class="ri-group-line text-base-content mr-0.5"></i>
+        {{ page.visits_count }}
+      </span>
+    </div>
+    <a class="text-lg hover:text-primary font-medium" href="{{ page.path }}">{{ page.link_text }}</a>
+    <p class="text-base-content/50 mt-2 line-clamp-2">{{ page.settings.description }}</p>
+    <div class="flex justify-between mt-3">
+      <span class="flex items-center">
+        <div class="avatar">
+          <div class="w-8 rounded-full shadow shadow-base-200 me-2">
+          <img src="{{ page.author.avatar_path }}"/>
+          </div>
+        </div>
+        <span class="font-medium">
+          {{ page.author.name }}
+        </span>
+      </span>
+      <a class="btn btn-soft btn-primary btn-sm" href="{{ page.path }}">Explore <i class="ri-arrow-right-line align-middle ms-1"></i></a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,169 @@
+{% assign dark_logo = site.settings.dark_logo_url %}
+{% assign contact_info = site.settings.contact_info | presence %}
+{% assign icp_beian = site.settings.icp_beian | presence %}
+
+<footer class="relative" style="background-color: {{ site.settings.footer_bg_color }}; color: {{ site.settings.footer_text_color }};">
+  <div class="container relative">
+    <div class="grid grid-cols-1">
+      <div class="relative py-16">
+        <div class="relative w-full">
+          <div class="grid md:grid-cols-12 grid-cols-1 gap-6">
+            <div class="lg:col-span-4 md:col-span-12 flex flex-col">
+              {% if dark_logo %}
+                <div>
+                  <a class="text-[22px] focus:outline-none inline-block" href="/">
+                    <img class="h-[40px] max-w-[150px] object-contain hover:object-scale-down" src="{{ dark_logo }}">
+                  </a>
+                </div>
+              {% endif %}
+              <p class="mt-6 mb-2">{{ site.settings.footer_description | newline_to_br }}</p>
+              {% if contact_info %}
+                <div class="flex mt-4 space-x-2">
+                  <i class="ri-map-pin-2-line text-2xl text-primary"></i>
+                  <div class="flex items-start">
+                    <h6 class="">{{ contact_info | newline_to_br }}</h6>
+                  </div>
+                </div>
+              {% endif %}
+              <div class="flex-1 flex items-end">
+                <ul class="list-none mt-4 text-lg text-gray-400 flex gap-2 flex-wrap">
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://dribbble.com/shreethemes"
+                      target="_blank">
+                      <i class="ri-wechat-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://dribbble.com/shreethemes"
+                      target="_blank">
+                      <i class="ri-qq-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://dribbble.com/shreethemes"
+                      target="_blank">
+                      <i class="ri-dingding-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-weibo-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-instagram-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-github-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-linkedin-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-messenger-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-taobao-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-telegram-2-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-twitter-x-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-whatsapp-fill"></i>
+                    </a>
+                  </li>
+                  <li class="inline mx-[2px]">
+                    <a
+                      class="size-7 inline-flex justify-center items-center hover:text-white border border-gray-800 dark:border-gray-700 rounded-md hover:border-primary dark:hover:border-primary hover:bg-primary dark:hover:bg-primary"
+                      href="https://www.behance.net/shreethemes"
+                      target="_blank">
+                      <i class="ri-youtube-fill"></i>
+                    </a>
+                  </li>
+
+                </ul>
+              </div>
+            </div>
+            <div></div>
+            <div class="lg:col-span-7 md:col-span-12 flex gap-12 justify-end">
+              {{ site.settings.footer_nav_links }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="py-[30px] px-0">
+    <div class="container relative text-center">
+      <div class="md:text-start text-center">
+        <p class="mb-0">
+          © {{ now | date: '%Y' }} {{ site.settings.copyright }}
+          <i class="ri-heart-fill text-red-600"></i>
+          by
+          <a
+            class="text-reset"
+            href="https://www.baklib.cn/"
+            target="_blank">Baklib</a>.
+          {% if icp_beian %}
+            <a
+              href="https://beian.miit.gov.cn/"
+              target="_blank"
+              class="ml-2">{{ icp_beian }}</a>
+          {% endif %}
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

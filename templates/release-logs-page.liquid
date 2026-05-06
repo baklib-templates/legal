@@ -1,0 +1,104 @@
+<section class='container overflow-visible p-2 mx-auto h-full first-section sm:px-0'>
+  <div class='hidden my-2 md:block'>
+    {% render 'breadcrumb', breadcrumb: page.breadcrumb  %}
+  </div>
+  <div class="flex h-full md:space-x-2 lg:mx-0">
+    <div class="flex-1 flex flex-col h-full space-y-2 min-h-[calc(100vh-200px)]">
+      {% assign page_title = page.settings.title | presence %}
+      {% assign page_thumb_image_url = page.settings.thumb_image_url | presence %}
+      {% assign page_description = page.settings.description | presence %}
+      {% assign page_content = page.settings.content | presence %}
+
+      <article class="block p-4 break-all shadow card">
+        <div class="flex items-center space-x-2 text-xs font-light shrink-0">
+          {% for tag in page.settings.tags %}
+            <a href="{{ tag.path }}" style="background-color: {{ tag.color }}" class="px-2 py-1 text-white badge">
+              {{ tag.name }}
+            </a>
+          {% endfor %}
+
+          {% assign version_count = page.versions | size %}
+          {% if version_count > 0 %}
+            <ul class="flex space-x-1">
+              <li class="px-2 py-1 rounded-lg border hover:bg-primary/10"><a href="{{ page.path }}">{{'
+              templates.page.current_version' | t }}</a></li>
+              {% for version_page in page.versions %}
+                <li class="px-2 py-1 rounded-lg border hover:bg-primary/10"><a href="{{ version_page.path | append: '?version=' |  append: version_page.name }}">{{ version_page.name }}</a></li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+          {%- if page.published_at -%}
+            <div class="flex items-center space-x-1 text-base-content/50">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-4 h-4" fill="currentColor"><path d="M7 3V1H9V3H15V1H17V3H21C21.5523 3 22 3.44772 22 4V9H20V5H17V7H15V5H9V7H7V5H4V19H10V21H3C2.44772 21 2 20.5523 2 20V4C2 3.44772 2.44772 3 3 3H7ZM17 12C14.7909 12 13 13.7909 13 16C13 18.2091 14.7909 20 17 20C19.2091 20 21 18.2091 21 16C21 13.7909 19.2091 12 17 12ZM11 16C11 12.6863 13.6863 10 17 10C20.3137 10 23 12.6863 23 16C23 19.3137 20.3137 22 17 22C13.6863 22 11 19.3137 11 16ZM16 13V16.4142L18.2929 18.7071L19.7071 17.2929L18 15.5858V13H16Z"></path></svg>
+              <span class="flex justify-center items-center font-mono text-xs">{{ page.published_at | date: "%Y-%m-%d" }}</span>
+            </div>
+          {%- endif -%}
+          {% comment %} 是否显示访问量 {% endcomment %}
+          {% if site.settings.is_show_visit_count %}
+            <span class="flex justify-center items-center font-mono text-xs font-normal text-base-content/50"> · {{ page.visits_count }} {{ '
+            templates.page.visit_count' | t: '访问量' }} </span>
+          {% endif %}
+        </div>
+        <h2 class="my-5 text-lg font-bold leading-8 md:text-2xl">
+          {{ page.settings.title }}
+        </h2>
+        {% if page.settings.thumb_image_url %}
+          <div class="overflow-hidden rounded-lg bg-primary/8 md:max-h-[40vh] mb-2">
+            <img class="w-full transition-all duration-500 ease-in-out scale-100 hover:scale-110" src="{{ page.settings.thumb_image_url }}" />
+          </div>
+        {% endif %}
+        {% if page_description %}
+          <p class="p-4 my-4 rounded-lg border-l-4 border-primary text-base-700 bg-primary/8">{{ page_description }}</p>
+        {% endif  %}
+
+        <div class="overflow-auto max-w-full">
+          <div class="ProseMirror prose sm:prose-base lg:prose-lg focus:outline-none">
+            {{ page_content }}
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+"name": "t:schema.templates.release-logs-page.name",
+"description": "t:schema.templates.release-logs-page.description",
+"thumb_url": "images/theme/page.png",
+"sub_page_templates": ["release-logs-page"],
+"settings": [
+    {
+    "id": "title",
+    "type": "text",
+    "placeholder": "",
+    "label": "t:schema.templates.release-logs-page.settings.title.label",
+    "info": "t:schema.templates.release-logs-page.settings.title.info"
+    },
+    {
+    "id": "description",
+    "type": "textarea",
+    "label": "t:schema.templates.release-logs-page.settings.description.label"
+    },
+    {
+    "id": "tags",
+    "type": "tag_picker",
+    "multiple": true,
+    "label": "t:schema.templates.release-logs-page.settings.tags.label"
+    },
+    {
+    "id": "thumb_image_url",
+    "type": "image_picker",
+    "ratio": "4:1",
+    "width": 640,
+    "label": "t:schema.templates.release-logs-page.settings.thumb_image_url.label"
+    },
+    {
+    "id": "content",
+    "type": "richtext",
+    "label": "t:schema.templates.release-logs-page.settings.content.label"
+    }
+]
+}
+{% endschema %}
+
