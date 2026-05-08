@@ -90,4 +90,33 @@
       }
     }
   }
+  ,
+  "legal_settings": {
+    "name": "Legal Hub 设置",
+    "settings": {
+      "brand_name": { "label": "品牌名称" },
+      "home_intro": { "label": "首页简介" },
+      "supported_language_prefixes": {
+        "label": "支持的语言前缀",
+        "info": "英文逗号分隔，例如：en,zh"
+      },
+      "default_language_prefix": { "label": "默认语言前缀" },
+      "enable_locale_redirect": { "label": "启用 / 的 GeoIP 自动跳转" },
+      "geoip_api_url": {
+        "label": "GeoIP 接口地址",
+        "info": "返回包含 country_code/country 等字段的 JSON。"
+      },
+      "home_categories_mode": {
+        "label": "分类展示样式",
+        "options": {
+          "cards": "卡片",
+          "accordion": "手风琴"
+        }
+      },
+      "legal_nav_items": {
+        "label": "自定义导航 HTML",
+        "info": "可选；设置后将覆盖默认导航链接。"
+      }
+    }
+  }
 }

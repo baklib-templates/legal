@@ -90,4 +90,33 @@
       }
     }
   }
+  ,
+  "legal_settings": {
+    "name": "Legal Hub Settings",
+    "settings": {
+      "brand_name": { "label": "Brand name" },
+      "home_intro": { "label": "Home intro" },
+      "supported_language_prefixes": {
+        "label": "Supported language prefixes",
+        "info": "Comma-separated, e.g. en,zh"
+      },
+      "default_language_prefix": { "label": "Default language prefix" },
+      "enable_locale_redirect": { "label": "Enable GeoIP redirect on /" },
+      "geoip_api_url": {
+        "label": "GeoIP API URL",
+        "info": "Returns a JSON object containing country_code/country fields."
+      },
+      "home_categories_mode": {
+        "label": "Categories layout",
+        "options": {
+          "cards": "Cards",
+          "accordion": "Accordion"
+        }
+      },
+      "legal_nav_items": {
+        "label": "Custom nav HTML",
+        "info": "Optional. If set, overrides default nav links."
+      }
+    }
+  }
 }

@@ -11,14 +11,6 @@ site:
 
     # Custom HTML (see settings_schema.json)
     head_html: ""
-    header_menu_html: |
-      <a href="/en/" class="hover:underline">Legal Hub</a>
-      <a href="/en/terms/" class="hover:underline">Terms</a>
-      <a href="/en/privacy/" class="hover:underline">Privacy</a>
-      <a href="/en/cookies/" class="hover:underline">Cookie</a>
-      <a href="/en/dpa/" class="hover:underline">DPA</a>
-      <a href="/en/security/" class="hover:underline">Security</a>
-      <a href="/en/subprocessors/" class="hover:underline">Subprocessors</a>
     footer_menu_html: |
       <a href="/en/" class="text-white hover:underline">Legal Hub</a>
       <a href="/en/privacy/" class="text-white hover:underline">Privacy</a>
@@ -31,14 +23,4 @@ site:
     default_language_prefix: "en"
     enable_locale_redirect: true
     geoip_api_url: "https://ipapi.co/json/"
-    company_legal_name: "【Company legal name】"
-    company_address: "【Company address】"
-    legal_contact_email: "legal@example.com"
-    privacy_contact_email: "privacy@example.com"
-    dpo_contact_email: ""
-    jurisdiction: ""
-    last_updated_label: "Last updated"
-    effective_date_label: "Effective date"
-    version_label: "Version"
-    show_change_log: true
     home_categories_mode: "cards"

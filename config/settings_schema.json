@@ -65,21 +65,6 @@
     "name": "t:schema.generic.name",
     "settings": [
       {
-        "id": "sort_rule",
-        "type": "select",
-        "label": "t:schema.generic.settings.sort_rule.label",
-        "choices": [
-          {"label": "t:schema.generic.settings.sort_rule.options.created_at_desc", "value": "-created_at"},
-          {"label": "t:schema.generic.settings.sort_rule.options.created_at_asc", "value": "created_at"},
-          {"label": "t:schema.generic.settings.sort_rule.options.edited_at_desc", "value": "-edited_at"},
-          {"label": "t:schema.generic.settings.sort_rule.options.edited_at_asc", "value": "edited_at"},
-          {"label": "t:schema.generic.settings.sort_rule.options.visit_count_desc", "value": "-visit_count"},
-          {"label": "t:schema.generic.settings.sort_rule.options.visit_count_asc", "value": "visit_count"},
-          {"label": "t:schema.generic.settings.sort_rule.options.manual", "value": ""}
-        ],
-        "default": "-created_at"
-      },
-      {
         "id": "is_allow_feedback",
         "type": "checkbox",
         "label": "t:schema.generic.settings.is_allow_feedback.label",
@@ -115,14 +100,6 @@
         "info": "t:schema.custom_html.settings.head_html.info",
         "rows": 10,
         "placeholder": "t:schema.custom_html.settings.head_html.placeholder"
-      },
-      {
-        "id": "header_menu_html",
-        "type": "html",
-        "label": "t:schema.custom_html.settings.header_menu_html.label",
-        "info": "t:schema.custom_html.settings.header_menu_html.info",
-        "rows": 6,
-        "placeholder": "t:schema.custom_html.settings.header_menu_html.placeholder"
       },
       {
         "id": "footer_menu_html",
@@ -174,62 +151,6 @@
         "label": "t:schema.legal_settings.geoip_api_url.label",
         "info": "t:schema.legal_settings.geoip_api_url.info",
         "default": "https://ipapi.co/json/"
-      },
-      {
-        "id": "company_legal_name",
-        "type": "text",
-        "label": "t:schema.legal_settings.company_legal_name.label"
-      },
-      {
-        "id": "company_address",
-        "type": "textarea",
-        "label": "t:schema.legal_settings.company_address.label"
-      },
-      {
-        "id": "legal_contact_email",
-        "type": "text",
-        "label": "t:schema.legal_settings.legal_contact_email.label",
-        "default": "legal@example.com"
-      },
-      {
-        "id": "privacy_contact_email",
-        "type": "text",
-        "label": "t:schema.legal_settings.privacy_contact_email.label",
-        "default": "privacy@example.com"
-      },
-      {
-        "id": "dpo_contact_email",
-        "type": "text",
-        "label": "t:schema.legal_settings.dpo_contact_email.label"
-      },
-      {
-        "id": "jurisdiction",
-        "type": "text",
-        "label": "t:schema.legal_settings.jurisdiction.label"
-      },
-      {
-        "id": "last_updated_label",
-        "type": "text",
-        "label": "t:schema.legal_settings.last_updated_label.label",
-        "default": "Last updated"
-      },
-      {
-        "id": "effective_date_label",
-        "type": "text",
-        "label": "t:schema.legal_settings.effective_date_label.label",
-        "default": "Effective date"
-      },
-      {
-        "id": "version_label",
-        "type": "text",
-        "label": "t:schema.legal_settings.version_label.label",
-        "default": "Version"
-      },
-      {
-        "id": "show_change_log",
-        "type": "checkbox",
-        "label": "t:schema.legal_settings.show_change_log.label",
-        "default": true
       },
       {
         "id": "home_categories_mode",
