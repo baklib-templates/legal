@@ -1,0 +1,26 @@
+{% comment %}
+  标签列表页：分页仅接受 PagesDrop / Array，不能使用 `tag.pages | order_by`，否则会得到 Relation，分页报错。
+  TagDrop 下 pages 查询与 `published_at` 排序组合也可能触发 SQL 异常。
+  排序能力仅在首页（children_in_list 已 join recording）使用 published_at；此处列表顺序沿用站点默认。
+{% endcomment %}
+<div class="flex-1 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    {% render 'news_toolbar', sort_base: tag.path, active_tag: tag, sort_controls: false %}
+
+    {% paginate_tag tag.pages, as: 'articles', per: 9 %}
+      <div class="grid grid-cols-1 gap-x-8 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
+        {% for article in articles %}
+          {% render 'card_grid', page: article %}
+        {% else %}
+          <div class="col-span-full py-24 text-center text-sm text-slate-500">{{ 'generic.empty' | t }}</div>
+        {% endfor %}
+      </div>
+
+      {% if paginate.total_count > 0 %}
+        <div class="mt-14 flex justify-center border-t border-slate-100 pt-10">
+          {% render 'paginate', paginate: paginate %}
+        </div>
+      {% endif %}
+    {% endpaginate_tag %}
+  </div>
+</div>

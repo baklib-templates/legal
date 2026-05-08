@@ -1,0 +1,39 @@
+{% comment %} Grid card：大图在上 + 标题 + 标签 · 日期（列表 / 标签页） {% endcomment %}
+{% assign thumb_image_url = page.settings.thumb_image_url | presence %}
+<article class="group flex flex-col">
+  <a href="{{ page.path }}" class="relative mb-4 block overflow-hidden rounded-xl bg-slate-100 aspect-[16/10]">
+    {% if thumb_image_url %}
+      <img
+        src="{{ thumb_image_url }}"
+        alt=""
+        class="h-full w-full object-cover transition duration-500 ease-out group-hover:scale-[1.03]"
+        loading="lazy"
+      />
+    {% else %}
+      <div class="flex h-full w-full items-center justify-center bg-gradient-to-br from-slate-100 to-slate-200 text-slate-400">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" class="h-12 w-12">
+          <rect x="3" y="5" width="18" height="14" rx="2" />
+          <circle cx="8.5" cy="10" r="1.5" />
+          <path d="M21 17l-6-6-4 4-2-2-4 4" />
+        </svg>
+      </div>
+    {% endif %}
+  </a>
+
+  <h2 class="text-lg font-semibold leading-snug tracking-tight text-slate-900">
+    <a href="{{ page.path }}" class="transition-colors hover:text-slate-600">{{ page.link_text }}</a>
+  </h2>
+
+  <p class="mt-2 text-sm text-slate-500">
+    {% assign first_tag = page.tags | first %}
+    {% if first_tag %}
+      <span class="text-slate-600">{{ first_tag.name }}</span>
+      {% if page.published_at %}
+        <span class="mx-1 text-slate-300">·</span>
+      {% endif %}
+    {% endif %}
+    {% if page.published_at %}
+      <time datetime="{{ page.published_at | date: '%Y-%m-%d' }}">{{ page.published_at | date: "%Y-%m-%d" }}</time>
+    {% endif %}
+  </p>
+</article>

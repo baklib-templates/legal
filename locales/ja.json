@@ -1,0 +1,110 @@
+{
+  "snippets": {
+    "feedback_form": {
+      "title": "フィードバックを送信",
+      "message_label": "メッセージ",
+      "message_placeholder": "フィードバック内容を入力してください",
+      "message_required": "フィードバック内容は必須です",
+      "submit": "送信",
+      "cancel": "キャンセル"
+    },
+    "feedback_button": {
+      "title_posted": "ご意見ありがとうございます",
+      "title_unposted": "フィードバックを送信"
+    }
+  },
+  "templates": {
+    "index": {
+      "list": {
+        "all": "すべて"
+      },
+      "sort_label": "並び替え",
+      "sort_newest": "新しい順",
+      "sort_oldest": "古い順"
+    },
+    "page": {
+      "current_version": "現在のバージョン",
+      "visit_count": "アクセス数"
+    }
+  },
+  "generic": {
+    "feedback_created_at": "最終フィードバック日時",
+    "empty": "データなし",
+    "all_tags": "すべてのタグ",
+    "recent_updates": "最新の更新",
+    "recent_memo_note": "ホーム一覧から最新 5 件を表示します（メモ用ページ）。",
+    "back_to_home": "ホームに戻る",
+    "copyright": "著作権",
+    "submit": "送信",
+    "placeholders": {
+      "search": "検索",
+      "input_feedback": "フィードバックを入力してください"
+    },
+    "buttons": {
+      "close": "閉じる",
+      "signout": "ログアウト",
+      "signin": "ログイン"
+    },
+    "tags_heading": "タグ",
+    "accessibility": {
+      "close_sidebar": "メニューを閉じる"
+    }
+  },
+  "paginate": {
+    "showing": "表示中",
+    "total": "合計",
+    "records": "件",
+    "previous": "前のページ",
+    "next": "次のページ"
+  },
+  "demo": {
+    "pages": {
+      "home": {
+        "settings": {
+          "title": "最新の記事",
+          "description": "ブログ・ニュース・お知らせをひとまとめに。<br class=\"hidden sm:inline\"/>最近の重要な情報を素早くキャッチアップできます。"
+        }
+      },
+      "children": [
+        {
+          "slug": "how-to-write-a-good-post",
+          "name": "良い記事の書き方：構成とチェックリスト",
+          "settings": {
+            "title": "良い記事の書き方：構成とチェックリスト",
+            "description": "見出しから本文まで、ブログ／ニュース向けの実践的な構成とチェックリスト。",
+            "tags": [
+              "ブログ"
+            ],
+            "content": "<h2>おすすめの構成</h2>\n<ol>\n<li><strong>タイトル</strong>：テーマと読者メリットを明確に</li>\n<li><strong>リード</strong>：背景と結論を1〜2文で</li>\n<li><strong>本文</strong>：課題→方法→事例→注意点の順で</li>\n<li><strong>まとめ</strong>：要点の整理と次のアクション</li>\n</ol>\n\n<h2>チェックリスト</h2>\n<ul>\n<li>読者と利用シーンは明確か？</li>\n<li>再利用できる手順やテンプレートがあるか？</li>\n<li>図・コード・スクショは必要に応じて付けたか？</li>\n<li>検索・整理しやすいか（タグ、要約、アイキャッチ）？</li>\n</ul>\n"
+          }
+        },
+        {
+          "slug": "news-new-content-channels",
+          "name": "ニュース：新しいコンテンツチャンネルを公開しました",
+          "settings": {
+            "title": "ニュース：新しいコンテンツチャンネルを公開しました",
+            "description": "「ニュース」「お知らせ」「ブログ」のチャンネルを追加。分類が明確になり、読みやすさが向上します。",
+            "tags": [
+              "ニュース",
+              "お知らせ"
+            ],
+            "content": "<h2>今回のアップデート</h2>\n<ul>\n<li>タグでコンテンツを絞り込み（ブログ／ニュース／お知らせなど）</li>\n<li>ホームでは最新を表示。並び順ルールも設定可能</li>\n<li>コンテンツサイト向けの情報設計とナビゲーション</li>\n</ul>\n\n<h2>こんな使い方ができます</h2>\n<ul>\n<li>プロダクトの動きは<strong>ニュース</strong>へ</li>\n<li>重要な連絡は<strong>お知らせ</strong>へ</li>\n<li>ノウハウや長文は<strong>ブログ記事</strong>として蓄積</li>\n</ul>\n"
+          }
+        },
+        {
+          "slug": "announcement-holiday-support-hours",
+          "name": "お知らせ：休業日のサポート時間について",
+          "settings": {
+            "title": "お知らせ：休業日のサポート時間について",
+            "description": "休日期間中のチャット／チケット対応時間のご案内です。",
+            "tags": [
+              "お知らせ",
+              "通知"
+            ],
+            "content": "<h2>サポート時間</h2>\n<p>休日期間中、オンラインサポートは <strong>10:00 – 18:00</strong> に変更します。</p>\n\n<h2>影響範囲</h2>\n<ul>\n<li>チャット：返信がやや遅れる場合があります</li>\n<li>チケット：緊急案件を優先します</li>\n<li>ナレッジベース：閲覧・検索は通常どおり</li>\n</ul>\n\n<h2>お問い合わせ</h2>\n<p>緊急の場合は、サイトフッターの連絡先、またはチケットからご連絡ください。</p>\n"
+          }
+        }
+      ]
+    }
+  }
+}

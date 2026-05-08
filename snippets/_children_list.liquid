@@ -1,0 +1,36 @@
+{%- comment -%}
+  Channel children list.
+  Params:
+  - pages: array (usually page.children_in_list)
+{%- endcomment -%}
+
+{%- assign items = pages -%}
+{%- assign count = items | size -%}
+
+{%- if count > 0 -%}
+  <div class="overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm shadow-slate-900/[0.04]">
+    {%- for p in items -%}
+      <article class="border-b border-slate-100 px-6 py-6 last:border-b-0">
+        <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500">
+          {%- if p.published_at -%}
+            <time datetime="{{ p.published_at | date: '%Y-%m-%d' }}" class="font-mono">{{ p.published_at | date: "%Y-%m-%d" }}</time>
+          {%- endif -%}
+          {%- if p.edited_at -%}
+            <span class="text-slate-300">·</span>
+            <span class="font-mono">{{ 'legal.meta.updated_at' | t }}: {{ p.edited_at | date: "%Y-%m-%d" }}</span>
+          {%- endif -%}
+        </div>
+
+        <h2 class="mt-3 text-lg font-semibold leading-snug tracking-tight text-slate-900">
+          <a href="{{ p.path }}" class="hover:text-slate-600">{{ p.link_text }}</a>
+        </h2>
+
+        {%- assign desc = p.settings.description | presence -%}
+        {%- if desc -%}
+          <p class="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-500">{{ desc }}</p>
+        {%- endif -%}
+      </article>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+

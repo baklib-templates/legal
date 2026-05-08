@@ -1,0 +1,79 @@
+<div class="flex-1 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mb-10 border-b border-slate-200 pb-8">
+      <h1 class="mb-6 text-2xl font-semibold tracking-tight text-slate-900 md:text-3xl">{{ 'generic.placeholders.search' | t }}</h1>
+      {% form_tag 'search' %}
+        <label class="relative flex items-center rounded-xl border border-slate-200 bg-slate-50 transition-colors focus-within:border-slate-300 focus-within:bg-white">
+          <span class="pointer-events-none absolute left-4 text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true">
+              <circle cx="11" cy="11" r="8" />
+              <path d="m21 21-4.3-4.3" />
+            </svg>
+          </span>
+          <input
+            type="search"
+            name="{{ form.keywords_field_name }}"
+            value="{{ search.keywords | escape_once }}"
+            class="w-full rounded-xl border-0 bg-transparent py-3.5 pl-12 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0 md:text-base"
+            placeholder="{{ 'generic.placeholders.search' | t }}"
+            autocomplete="off"
+            x-init="$nextTick(() => { $el.focus(); $el.setSelectionRange($el.value.length, $el.value.length); })"
+          />
+        </label>
+      {% endform_tag %}
+
+      {% if search.keywords or search.tag %}
+        <p class="mt-4 text-sm text-slate-500">
+          {% if search.tag %}
+            <span class="font-medium text-slate-700">{{ search.tag.name }}</span>
+          {% endif %}
+          {% if search.keywords %}
+            {% if search.tag %}<span class="text-slate-300"> · </span>{% endif %}
+            <span>{{ search.keywords }}</span>
+          {% endif %}
+        </p>
+      {% endif %}
+    </div>
+
+    {% if search.keywords or search.tag %}
+      <div class="min-h-[40vh]">
+        {% if search.page_number == 1 %}
+          {% for link in search.extends %}
+            <div class="mb-6 rounded-xl border border-slate-200 bg-slate-50/80 p-5 transition-colors hover:border-slate-300 hover:bg-slate-50">
+              <a class="search-highlight-block text-base font-semibold text-slate-900 hover:text-slate-600 md:text-lg" href="{{ link.url }}">{{ link.link_text }}</a>
+              <p class="mt-2 line-clamp-2 text-xs text-slate-400 md:text-sm">{{ link.url }}</p>
+            </div>
+          {% endfor %}
+        {% endif %}
+
+        {% paginate_tag search.pages, as: 'items' %}
+          <ul class="list-none divide-y divide-slate-100 border-t border-slate-100">
+            {% for result in items %}
+              <li class="py-6 first:pt-0 md:py-8">
+                <a href="{{ result.path }}" class="group block">
+                  <h2 class="search-highlight-block text-lg font-semibold tracking-tight text-slate-900 group-hover:text-slate-600 md:text-xl">
+                    {{ result.highlighted_search_title }}
+                  </h2>
+                  <p class="search-highlight-block mt-2 line-clamp-3 text-sm leading-relaxed text-slate-500 md:line-clamp-4 md:text-[15px]">
+                    {{ result.highlighted_search_content }}
+                  </p>
+                  <p class="mt-3 font-mono text-xs text-slate-400">{{ result.path }}</p>
+                </a>
+              </li>
+            {% else %}
+              <li class="py-24 text-center text-sm text-slate-500">{{ 'generic.empty' | t }}</li>
+            {% endfor %}
+          </ul>
+
+          {% if paginate.total_count > 0 %}
+            <div class="mt-14 flex justify-center border-t border-slate-100 pt-10">
+              {% render 'paginate', paginate: paginate %}
+            </div>
+          {% endif %}
+        {% endpaginate_tag %}
+      </div>
+    {% else %}
+      <p class="py-16 text-center text-sm text-slate-500">{{ 'generic.empty' | t }}</p>
+    {% endif %}
+  </div>
+</div>

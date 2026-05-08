@@ -1,59 +1,68 @@
-{% comment %} 
-  分页组件
-  变量:
-  - paginate: 分页对象
-  - paginate.total_count: 总条数
-  - paginate.total_pages: 总页数
-  - paginate.prev_page: 上一页
-  - paginate.next_page: 下一页
-  - paginate.url_for: 分页链接
-  - paginate.series: 页码列表
-{% endcomment %}
 {% if paginate.total_count > 0 %}
-  <div class="container text-sm">
-    {% if paginate.total_pages > 1 %}
-      <div class="join px-4 space-x-1">
-        {% comment %} 上一页 {% endcomment %}
-        <a data-turbo-action="advance" {% if paginate.prev_page %}href="{{ paginate.url_for[paginate.prev_page] }}"{% else %}disabled{% endif %} class="btn btn-soft btn-circle shadow">
-          <i class="ri-arrow-left-s-line"></i>
-          <span class="sr-only">{{ "paginate.previous" | t: '上一页'  }}</span>
-        </a>
-        {% comment %} 页码 {% endcomment %}
-        {% for i in paginate.series %}
-          {% assign type = i | typeof %}
-          {% case type %}
-            {% when 'string' %}
-              {% if i == 'gap' %}
-                <span class="join-item btn border-none btn-soft btn-circle">...</span>
-              {% else %}
-                <span aria-current="page" class="join-item btn btn-primary btn-circle border-none shadow shadow-primary/20 btn-active">{{i}}</span>
-              {% endif %}
-            {% when 'integer' %}
-              <a data-turbo-action="advance" href="{{paginate.url_for[i]}}" class="join-item btn btn-soft btn-circle border-none shadow">{{i}}</a>
-          {% endcase %}
-        {% endfor %}
-        {% comment %} 下一页 {% endcomment %}
-        <a data-turbo-action="advance" {% if paginate.next_page %}href="{{ paginate.url_for[paginate.next_page] }}"{% else %}disabled{% endif %} class="btn btn-soft btn-circle shadow">
-          <i class="ri-arrow-right-s-line"></i>
-          <span class="sr-only">{{ "paginate.next" | t: '下一页'  }}</span>
-        </a>
-      </div>
-      <div class="text-center text-base-content/50 mt-4">
-        {{ "paginate.showing" | t: "当前显示第" }}
-        <span class="font-medium">{{paginate.from}}</span>
-        ~
-        <span class="font-medium">{{paginate.to}}</span>
-        {{ "paginate.records" | t: "条记录" }},
-        {{ "paginate.records" | t: "总共" }}
-        <span class="font-medium">{{paginate.total_count}}</span>
-        {{ "paginate.records" | t: "条记录" }}
-      </div>
-    {% else %}
-      <div class="text-center text-base-content/50 mt-4">
-        {{ "paginate.records" | t: "总共" }}
-          <span class="bkt-font-medium">{{paginate.total_count}}</span>
-        {{ "paginate.records" | t: "条记录" }}
-      </div>
-    {% endif %}
+  <div class="bkt">
+    <div class="bkt-flex bkt-items-center bkt-justify-between bkt-py-3 bkt-border-gray-200">
+      {% if paginate.total_pages > 1 %}
+
+        <div class="bkt-flex bkt-justify-between bkt-flex-1 sm:bkt-hidden">
+          <a data-turbo-action="advance" {% if paginate.prev_page %}href="{{ paginate.url_for[paginate.prev_page] }}"{% else %}disabled{% endif %} class="bkt-relative bkt-inline-flex bkt-items-center bkt-px-4 bkt-py-2 bkt-text-sm bkt-font-medium bkt-text-gray-700 bkt-bg-white bkt-border bkt-border-gray-300 bkt-rounded-md hover:bkt-bg-gray-50">{{ "paginate.previous" | t: '上一页'  }}</a>
+          <a data-turbo-action="advance" {% if paginate.next_page %}href="{{ paginate.url_for[paginate.next_page] }}"{% else %}disabled{% endif %} class="bkt-relative bkt-inline-flex bkt-items-center bkt-px-4 bkt-py-2 bkt-ml-3 bkt-text-sm bkt-font-medium bkt-text-gray-700 bkt-bg-white bkt-border bkt-border-gray-300 bkt-rounded-md hover:bkt-bg-gray-50">{{ "paginate.next" | t: '下一页'  }}</a>
+        </div>
+        <div class="bkt-hidden sm:bkt-flex sm:bkt-flex-1 sm:bkt-items-center sm:bkt-justify-between">
+          <div class="bkt-flex bkt-flex-col bkt-space-y-2 bkt-items-center">
+            <nav class="bkt-pagination" aria-label="Pagination">
+              {% comment %} 上一页 {% endcomment %}
+              <a data-turbo-action="advance" {% if paginate.prev_page %}href="{{ paginate.url_for[paginate.prev_page] }}"{% else %}disabled{% endif %} class="bkt-pagination__prev">
+                <svg class="bkt-w-5 bkt-h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12.79 5.23a.75.75 0 01-.02 1.06L8.832 10l3.938 3.71a.75.75 0 11-1.04 1.08l-4.5-4.25a.75.75 0 010-1.08l4.5-4.25a.75.75 0 011.06.02z" clip-rule="evenodd" />
+                </svg>
+                <span class="sr-only">{{ "paginate.previous" | t: '上一页'  }}</span>
+              </a>
+
+              {% comment %} 页码 {% endcomment %}
+              {% for i in paginate.series %}
+                {% assign type = i | typeof %}
+                {% case type %}
+                  {% when 'string' %}
+                    {% if i == 'gap' %}
+                      <span class="bkt-pagination__gap">...</span>
+                    {% else %}
+                      <span aria-current="page" class="bkt-pagination__page bkt-pagination__page--current">{{i}}</span>
+                    {% endif %}
+                  {% when 'integer' %}
+                    <a data-turbo-action="advance" href="{{paginate.url_for[i]}}" class="bkt-pagination__page">{{i}}</a>
+                {% endcase %}
+              {% endfor %}
+
+              {% comment %} 下一页 {% endcomment %}
+              <a data-turbo-action="advance" {% if paginate.next_page %}href="{{ paginate.url_for[paginate.next_page] }}"{% else %}disabled{% endif %} class="bkt-pagination__next">
+                <span class="sr-only">{{ "paginate.next" | t: '下一页'  }}</span>
+                <svg class="bkt-w-5 bkt-h-5" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M7.21 14.77a.75.75 0 01.02-1.06L11.168 10 7.23 6.29a.75.75 0 111.04-1.08l4.5 4.25a.75.75 0 010 1.08l-4.5 4.25a.75.75 0 01-1.06-.02z" clip-rule="evenodd" />
+                </svg>
+              </a>
+            </nav>
+            <div class="bkt-mx-2">
+              <p class="bkt-text-sm bkt-text-gray-700">
+                {{ "paginate.showing" | t: "当前显示第" }}
+                <span class="bkt-font-medium">{{paginate.from}}</span>
+                ~
+                <span class="bkt-font-medium">{{paginate.to}}</span>
+                {{ "paginate.records" | t: "条记录" }},
+                {{ "paginate.records" | t: "总共" }}
+                <span class="bkt-font-medium">{{paginate.total_count}}</span>
+                {{ "paginate.records" | t: "条记录" }}
+              </p>
+            </div>
+          </div>
+        </div>
+
+      {% else %}
+        <p class="bkt-text-sm bkt-text-gray-600">
+          {{ "paginate.total" | t: "总共" }}
+            <span class="bkt-font-medium">{{paginate.total_count}}</span>
+          {{ "paginate.records" | t: "条记录" }}
+        </p>
+      {% endif %}
+    </div>
   </div>
 {% endif %}

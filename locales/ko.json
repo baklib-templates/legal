@@ -1,0 +1,110 @@
+{
+  "snippets": {
+    "feedback_form": {
+      "title": "피드백 제출",
+      "message_label": "메시지",
+      "message_placeholder": "피드백 내용을 입력해 주세요",
+      "message_required": "피드백 내용은 비워둘 수 없습니다",
+      "submit": "제출",
+      "cancel": "취소"
+    },
+    "feedback_button": {
+      "title_posted": "피드백을 보내주셔서 감사합니다",
+      "title_unposted": "피드백 제출"
+    }
+  },
+  "templates": {
+    "index": {
+      "list": {
+        "all": "전체"
+      },
+      "sort_label": "정렬",
+      "sort_newest": "최신순",
+      "sort_oldest": "오래된순"
+    },
+    "page": {
+      "current_version": "현재 버전",
+      "visit_count": "방문 수"
+    }
+  },
+  "generic": {
+    "feedback_created_at": "마지막 피드백 일시",
+    "empty": "데이터 없음",
+    "all_tags": "모든 태그",
+    "recent_updates": "최근 업데이트",
+    "recent_memo_note": "홈 목록에서 최신 5개 항목을 보여 줍니다(메모용 페이지).",
+    "back_to_home": "홈으로 돌아가기",
+    "copyright": "저작권",
+    "submit": "제출",
+    "placeholders": {
+      "search": "검색",
+      "input_feedback": "피드백을 입력하세요"
+    },
+    "buttons": {
+      "close": "닫기",
+      "signout": "로그아웃",
+      "signin": "로그인"
+    },
+    "tags_heading": "태그",
+    "accessibility": {
+      "close_sidebar": "메뉴 닫기"
+    }
+  },
+  "paginate": {
+    "showing": "현재 표시",
+    "total": "전체",
+    "records": "건",
+    "previous": "이전 페이지",
+    "next": "다음 페이지"
+  },
+  "demo": {
+    "pages": {
+      "home": {
+        "settings": {
+          "title": "최신 글",
+          "description": "블로그, 뉴스, 공지를 한곳에 모았습니다.<br class=\"hidden sm:inline\"/>중요한 소식을 빠르게 확인하세요."
+        }
+      },
+      "children": [
+        {
+          "slug": "how-to-write-a-good-post",
+          "name": "좋은 글쓰기: 구조와 체크리스트",
+          "settings": {
+            "title": "좋은 글쓰기: 구조와 체크리스트",
+            "description": "제목부터 본문까지, 블로그·뉴스에 맞는 실전 구성과 체크리스트입니다.",
+            "tags": [
+              "블로그"
+            ],
+            "content": "<h2>추천 구조</h2>\n<ol>\n<li><strong>제목</strong>: 주제와 독자 이득을 분명히</li>\n<li><strong>도입</strong>: 배경과 결론을 1~2문장으로</li>\n<li><strong>본문</strong>: 문제 → 방법 → 예시 → 주의사항 순으로</li>\n<li><strong>마무리</strong>: 핵심 정리와 다음 행동</li>\n</ol>\n\n<h2>체크리스트</h2>\n<ul>\n<li>독자와 사용 상황이 분명한가?</li>\n<li>재사용 가능한 단계나 템플릿이 있는가?</li>\n<li>필요하면 다이어그램·코드·스크린샷을 넣었는가?</li>\n<li>나중에 찾기 쉬운가(태그, 요약, 커버 이미지)?</li>\n</ul>\n"
+          }
+        },
+        {
+          "slug": "news-new-content-channels",
+          "name": "뉴스: 새 콘텐츠 채널을 열었습니다",
+          "settings": {
+            "title": "뉴스: 새 콘텐츠 채널을 열었습니다",
+            "description": "「뉴스」「공지」「블로그」 채널을 추가해 분류를 명확히하고 읽기 경험을 개선했습니다.",
+            "tags": [
+              "뉴스",
+              "공지"
+            ],
+            "content": "<h2>이번 업데이트</h2>\n<ul>\n<li>태그로 콘텐츠 필터링(블로그/뉴스/공지 등)</li>\n<li>홈에서는 최신 콘텐츠를 기본 표시, 정렬 규칙 설정 가능</li>\n<li>콘텐츠 사이트에 맞는 정보 구조와 내비게이션</li>\n</ul>\n\n<h2>활용 방법</h2>\n<ul>\n<li>제품 소식은 <strong>뉴스</strong>에</li>\n<li>중요한 알림은 <strong>공지</strong>에</li>\n<li>노하우와 장문은 <strong>블로그 글</strong>로 축적</li>\n</ul>\n"
+          }
+        },
+        {
+          "slug": "announcement-holiday-support-hours",
+          "name": "공지: 연휴 지원 시간 안내",
+          "settings": {
+            "title": "공지: 연휴 지원 시간 안내",
+            "description": "연휴 기간 고객 지원 및 티켓 응답 시간 안내입니다.",
+            "tags": [
+              "공지",
+              "알림"
+            ],
+            "content": "<h2>지원 시간</h2>\n<p>연휴 기간 온라인 지원 시간은 <strong>10:00 – 18:00</strong>으로 조정됩니다.</p>\n\n<h2>영향 범위</h2>\n<ul>\n<li>채팅: 응답이 다소 지연될 수 있습니다</li>\n<li>티켓: 긴급 이슈를 우선 처리합니다</li>\n<li>지식 베이스: 검색·열람은 정상</li>\n</ul>\n\n<h2>문의</h2>\n<p>긴급한 경우 사이트 하단 연락처 또는 티켓으로 문의해 주세요.</p>\n"
+          }
+        }
+      ]
+    }
+  }
+}

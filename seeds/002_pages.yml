@@ -1,0 +1,265 @@
+pages:
+  # Root `/`
+  template_name: "index"
+
+  children:
+    # English root: `/en/`
+    - name: "Policy Library"
+      slug: "en"
+      template_name: "language"
+      settings:
+        description: "Centralized legal and compliance policies, notices, and supporting materials."
+      children:
+        - name: "Terms & Conditions"
+          slug: "terms"
+          template_name: "channel"
+          settings:
+            description: "Core service agreements, usage rules, and service levels."
+          children:
+            - name: "Terms of Service"
+              slug: "terms-of-service"
+              template_name: "page"
+              settings:
+                description: "Terms governing your use of the services provided by 【Company legal name】."
+                content: |
+                  <h2>1. Introduction</h2>
+                  <p>These Terms of Service (\"Terms\") govern your access to and use of the services provided by <strong>【Company legal name】</strong> (\"Company\"). If you do not agree, do not use the Services.</p>
+
+                  <h2>2. Definitions</h2>
+                  <h3>2.1 \"Services\"</h3>
+                  <p>The websites, applications, and related offerings operated by the Company.</p>
+
+                  <h2>3. Account and Eligibility</h2>
+                  <h3>3.1 Eligibility</h3>
+                  <p>You must be legally able to enter into a binding contract.</p>
+
+                  <h2>4. Acceptable Use</h2>
+                  <p>Use must comply with the Acceptable Use Policy (AUP) at <code>/en/terms/acceptable-use-policy</code>.</p>
+
+                  <h2>5. Fees and Payment</h2>
+                  <p>Fees (if applicable) are described in your order form or subscription plan.</p>
+
+                  <h2>6. Intellectual Property</h2>
+                  <p>The Services and related materials are owned by the Company or its licensors.</p>
+
+                  <h2>7. Disclaimers</h2>
+                  <p>Services are provided \"as is\" and \"as available\" to the maximum extent permitted by law.</p>
+
+                  <h2>8. Limitation of Liability</h2>
+                  <p>To the maximum extent permitted, the Company is not liable for indirect or consequential damages.</p>
+
+                  <h2>9. Contact</h2>
+                  <p>For legal inquiries, contact <strong>【联系邮箱】</strong> or <strong>{{ site.settings.legal_contact_email }}</strong>.</p>
+
+            - name: "Acceptable Use Policy"
+              slug: "acceptable-use-policy"
+              template_name: "page"
+              settings:
+                description: "Rules governing prohibited activities and misuse."
+                content: |
+                  <h2>1. Scope</h2>
+                  <p>This AUP applies to all use of the Services.</p>
+                  <h2>2. Prohibited content</h2>
+                  <ul>
+                    <li>Illegal content and infringement</li>
+                    <li>Malware, phishing, or fraud</li>
+                    <li>Harassment and hate content</li>
+                  </ul>
+                  <h2>3. Prohibited behavior</h2>
+                  <ul>
+                    <li>Unauthorized access or scanning</li>
+                    <li>Abuse of rate limits</li>
+                    <li>Interference with service availability</li>
+                    <li>Data scraping contrary to agreements</li>
+                  </ul>
+                  <h2>4. Enforcement</h2>
+                  <p>We may suspend or terminate access for violations.</p>
+
+            - name: "Service Level Agreement"
+              slug: "sla"
+              template_name: "page"
+              settings:
+                description: "Availability targets and support response commitments."
+                content: |
+                  <h2>1. Availability</h2>
+                  <p>Target monthly uptime: <strong>99.9%</strong> (excluding scheduled maintenance).</p>
+                  <h2>2. Support</h2>
+                  <p>Support channels and response times depend on your plan.</p>
+                  <h2>3. Service credits</h2>
+                  <p>Service credits (if any) are detailed in your order form.</p>
+
+        - name: "Data & Privacy"
+          slug: "privacy"
+          template_name: "channel"
+          settings:
+            description: "Privacy notice, cookies, and data processing terms."
+          children:
+            - name: "Privacy Policy"
+              slug: "privacy-policy"
+              template_name: "page"
+              settings:
+                description: "How we collect, use, share, and protect personal data."
+                content: |
+                  <h2>1. Overview</h2>
+                  <p>This Privacy Policy explains how <strong>【Company legal name】</strong> processes personal data.</p>
+                  <h2>2. Data categories</h2>
+                  <ul>
+                    <li>Identifiers and contact details</li>
+                    <li>Usage and device information</li>
+                    <li>Customer support communications</li>
+                  </ul>
+                  <h2>3. Purposes and legal bases</h2>
+                  <h3>3.1 Provide the Services</h3>
+                  <h3>3.2 Security and fraud prevention</h3>
+                  <h3>3.3 Compliance</h3>
+                  <h2>4. Sharing</h2>
+                  <p>We share data with service providers under contract and with appropriate safeguards.</p>
+                  <h2>5. International transfers</h2>
+                  <p>Where applicable, transfers rely on standard contractual clauses or similar mechanisms.</p>
+                  <h2>6. Data subject rights</h2>
+                  <p>Requests: access, deletion, correction, export, objection, and withdrawal of consent.</p>
+                  <h2>7. Retention</h2>
+                  <p>We retain data as needed for business and legal purposes.</p>
+                  <h2>8. Contact</h2>
+                  <p>Privacy contact: <strong>{{ site.settings.privacy_contact_email }}</strong> (replace placeholders before launch).</p>
+
+            - name: "Cookie Policy"
+              slug: "cookie-policy"
+              template_name: "page"
+              settings:
+                description: "Cookie categories, purposes, and choices."
+                content: |
+                  <h2>1. What are cookies?</h2>
+                  <p>Cookies are small text files stored on your device.</p>
+                  <h2>2. Categories</h2>
+                  <ul>
+                    <li>Strictly necessary</li>
+                    <li>Analytics</li>
+                    <li>Functional</li>
+                    <li>Advertising</li>
+                  </ul>
+                  <h2>3. Managing preferences</h2>
+                  <p>Use browser settings or the cookie banner (if enabled) to manage choices.</p>
+                  <h2>4. Cookie table</h2>
+                  <p>Replace with an actual list of cookies, providers, and retention.</p>
+
+            - name: "Data Processing Agreement"
+              slug: "data-processing-agreement"
+              template_name: "page"
+              settings:
+                description: "B2B processing terms, roles, subprocessors, transfers, and safeguards."
+                content: |
+                  <h2>1. Roles</h2>
+                  <p>Customer is the Controller; Company is the Processor (unless otherwise stated).</p>
+                  <h2>2. Processing instructions</h2>
+                  <p>Processing is limited to documented instructions from the Customer.</p>
+                  <h2>3. Subprocessors</h2>
+                  <p>See <code>/en/subprocessors/</code> for the current list and change history.</p>
+                  <h2>4. International transfers</h2>
+                  <p>Use SCCs or equivalent safeguards where required.</p>
+                  <h2>5. Security measures</h2>
+                  <p>Describe technical and organizational measures (TOMs) and incident response.</p>
+                  <h2>6. Audit and assistance</h2>
+                  <p>Company will assist with audits and DPIAs as contractually agreed.</p>
+                  <h2>7. Deletion/return</h2>
+                  <p>Upon termination, data is deleted or returned per agreement.</p>
+
+        - name: "IP & Compliance"
+          slug: "compliance"
+          template_name: "channel"
+          settings:
+            description: "IP policies and compliance statements."
+          children:
+            - name: "Brand Guidelines"
+              slug: "brand-guidelines"
+              template_name: "page"
+              settings:
+                description: "Guidelines for trademark and brand usage."
+                content: |
+                  <h2>1. Approved marks</h2>
+                  <p>Use only approved logos and wordmarks.</p>
+                  <h2>2. Do's and Don'ts</h2>
+                  <ul><li>Do keep clear space</li><li>Do not alter colors</li></ul>
+
+            - name: "DMCA / Copyright"
+              slug: "dmca"
+              template_name: "page"
+              settings:
+                description: "Copyright and takedown process."
+                content: |
+                  <h2>1. Notices</h2>
+                  <p>Send takedown notices to <strong>{{ site.settings.legal_contact_email }}</strong>.</p>
+                  <h2>2. Counter-notices</h2>
+                  <p>Counter-notice requirements and timeline.</p>
+
+            - name: "Export Controls"
+              slug: "export-controls"
+              template_name: "page"
+              settings:
+                description: "Export controls and sanctions compliance statement."
+                content: |
+                  <h2>1. Restricted territories</h2>
+                  <p>Services may not be used where prohibited by applicable laws.</p>
+                  <h2>2. Customer obligations</h2>
+                  <p>Customer must comply with export and sanctions laws.</p>
+
+        - name: "Security"
+          slug: "security"
+          template_name: "channel"
+          settings:
+            description: "Security policies, reports, and disclosures."
+          children:
+            - name: "Security Overview"
+              slug: "security-overview"
+              template_name: "page"
+              settings:
+                description: "High-level security posture and controls."
+                content: |
+                  <h2>1. Program</h2>
+                  <p>Replace with your security program description (ISO 27001, SOC 2, etc.).</p>
+                  <h2>2. Incident response</h2>
+                  <p>Describe timelines and customer notification commitments.</p>
+
+        - name: "Subprocessors"
+          slug: "subprocessors"
+          template_name: "channel"
+          settings:
+            description: "List of subprocessors and change history."
+          children:
+            - name: "Subprocessor List"
+              slug: "list"
+              template_name: "page"
+              settings:
+                description: "Current subprocessors and purposes."
+                content: |
+                  <h2>1. Subprocessors</h2>
+                  <p>Replace with a table of vendors, locations, purposes, and safeguards.</p>
+                  <h2>2. Updates</h2>
+                  <p>Describe notification window and subscription method.</p>
+
+    # Chinese root: `/zh/` (简版：用于演示多语言结构)
+    - name: "政策文库"
+      slug: "zh"
+      template_name: "language"
+      settings:
+        description: "集中托管法律与合规政策文档（示例站点）。"
+      children:
+        - name: "服务协议"
+          slug: "terms"
+          template_name: "channel"
+          settings:
+            description: "服务条款、可接受使用政策与服务等级。"
+          children:
+            - name: "服务条款"
+              slug: "terms-of-service"
+              template_name: "page"
+              settings:
+                description: "规范你对【公司法定名称】服务的使用。"
+                content: |
+                  <h2>1. 引言</h2>
+                  <p>本《服务条款》用于规范你对 <strong>【公司法定名称】</strong> 提供之服务的访问与使用。</p>
+                  <h2>2. 定义</h2>
+                  <h3>2.1 服务</h3>
+                  <p>指公司运营的网站、应用与相关功能。</p>
+                  <h2>3. 联系我们</h2>
+                  <p>法务邮箱：<strong>{{ site.settings.legal_contact_email }}</strong></p>

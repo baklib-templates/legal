@@ -1,0 +1,71 @@
+{%- comment -%}
+  Legal categories cards / accordion for a language root page.
+  Params:
+  - lang_root: "/en/" etc.
+  - channels: array of pages (children_in_list)
+{%- endcomment -%}
+
+{%- assign mode = site.settings.home_categories_mode | default: 'cards' -%}
+
+{%- if mode == 'accordion' -%}
+  <div class="space-y-3">
+    {%- for ch in channels -%}
+      <details class="group rounded-2xl border border-slate-200 bg-white p-5 shadow-sm">
+        <summary class="flex cursor-pointer list-none items-center justify-between gap-4">
+          <div class="min-w-0">
+            <div class="text-base font-semibold text-slate-900">{{ ch.link_text }}</div>
+            {%- if ch.settings.description -%}
+              <div class="mt-1 line-clamp-2 text-sm text-slate-500">{{ ch.settings.description }}</div>
+            {%- endif -%}
+          </div>
+          <span class="shrink-0 text-slate-400 transition group-open:rotate-180">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m6 9 6 6 6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </summary>
+
+        {%- assign child_count = ch.children_in_list | size -%}
+        {%- if child_count > 0 -%}
+          <div class="mt-4 border-t border-slate-100 pt-4">
+            <ul class="space-y-2">
+              {%- for p in ch.children_in_list | limit: 8 -%}
+                <li>
+                  <a href="{{ p.path }}" class="text-sm font-medium text-slate-700 hover:text-slate-900">{{ p.link_text }}</a>
+                </li>
+              {%- endfor -%}
+            </ul>
+            <div class="mt-4">
+              <a href="{{ ch.path }}" class="text-sm font-medium text-primary hover:underline">{{ 'legal.actions.view_all' | t }}</a>
+            </div>
+          </div>
+        {%- else -%}
+          <div class="mt-4 border-t border-slate-100 pt-4">
+            <a href="{{ ch.path }}" class="text-sm font-medium text-primary hover:underline">{{ 'legal.actions.open' | t }}</a>
+          </div>
+        {%- endif -%}
+      </details>
+    {%- endfor -%}
+  </div>
+{%- else -%}
+  <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    {%- for ch in channels -%}
+      <a href="{{ ch.path }}" class="group rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:border-slate-300 hover:shadow-md">
+        <div class="flex items-start justify-between gap-4">
+          <div class="min-w-0">
+            <div class="text-base font-semibold text-slate-900 group-hover:text-slate-700">{{ ch.link_text }}</div>
+            {%- if ch.settings.description -%}
+              <div class="mt-2 line-clamp-3 text-sm text-slate-500">{{ ch.settings.description }}</div>
+            {%- endif -%}
+          </div>
+          <span class="shrink-0 text-slate-300 group-hover:text-slate-400">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </div>
+      </a>
+    {%- endfor -%}
+  </div>
+{%- endif -%}
+

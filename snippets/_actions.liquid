@@ -1,0 +1,30 @@
+{%- comment -%}
+  Actions bar (print / copy link).
+{%- endcomment -%}
+
+<div class="flex flex-wrap items-center gap-2 print:hidden">
+  <button
+    type="button"
+    class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
+    data-legal-action="print"
+  >
+    {{ 'legal.actions.print' | t }}
+  </button>
+
+  <button
+    type="button"
+    class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
+    data-legal-action="copy_link"
+  >
+    {{ 'legal.actions.copy_link' | t }}
+  </button>
+
+  <button
+    type="button"
+    class="inline-flex items-center gap-2 rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
+    data-legal-action="pdf"
+  >
+    {{ 'legal.actions.export_pdf' | t }}
+  </button>
+</div>
+

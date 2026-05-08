@@ -1,0 +1,37 @@
+{%- comment -%}
+  Version switcher.
+  Strategy:
+  - If current page has children, treat them as versions.
+  - If current page has a parent and parent has children, treat siblings (and parent) as versions.
+{%- endcomment -%}
+
+{%- assign current = page -%}
+{%- assign versions = current.children_in_list -%}
+{%- assign versions_count = versions | size -%}
+
+{%- assign base_page = current -%}
+{%- if versions_count == 0 and current.parent -%}
+  {%- assign base_page = current.parent -%}
+  {%- assign versions = base_page.children_in_list -%}
+  {%- assign versions_count = versions | size -%}
+{%- endif -%}
+
+{%- if versions_count > 0 -%}
+  <div class="flex flex-wrap items-center gap-2 text-xs text-slate-600 print:hidden">
+    <label class="text-slate-500">{{ 'legal.version_switcher.label' | t }}</label>
+    <select
+      class="select select-sm select-bordered bg-white"
+      onchange="if(this.value){window.location.href=this.value}"
+    >
+      <option value="{{ base_page.path }}" {% if current.path == base_page.path %}selected{% endif %}>
+        {{ 'legal.version_switcher.current' | t }}
+      </option>
+      {%- for v in versions -%}
+        <option value="{{ v.path }}" {% if current.path == v.path %}selected{% endif %}>
+          {{ v.link_text | default: v.name }}
+        </option>
+      {%- endfor -%}
+    </select>
+  </div>
+{%- endif -%}
+

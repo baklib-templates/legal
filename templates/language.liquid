@@ -1,0 +1,43 @@
+{%- comment -%}
+  Language root page: `/<lang>/`
+  Children are channels: terms/privacy/dpa/security/subprocessors...
+{%- endcomment -%}
+
+{%- assign lang_root = page.path -%}
+{%- assign channels = page.children_in_list -%}
+
+<div class="flex-1 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <header class="mb-10 space-y-4 border-b border-slate-200 pb-10">
+      <h1 class="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">{{ page.link_text | default: site.settings.brand_name | default: 'Policy Library' }}</h1>
+
+      {%- if page.settings.description -%}
+        <div class="max-w-3xl text-base leading-relaxed text-slate-600">{{ page.settings.description }}</div>
+      {%- endif -%}
+
+      <div class="pt-2">
+        {% render 'search_box' %}
+      </div>
+    </header>
+
+    {% render 'cards', lang_root: lang_root, channels: channels %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:schema.templates.language.name",
+    "description": "t:schema.templates.language.description",
+    "thumb_url": "images/theme/index-list.png",
+    "sub_page_templates": ["channel"],
+    "settings": [
+      {
+        "id": "description",
+        "type": "textarea",
+        "to_markdown": true,
+        "label": "t:schema.templates.language.settings.description.label"
+      }
+    ]
+  }
+{% endschema %}
+

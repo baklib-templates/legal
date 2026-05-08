@@ -1,0 +1,44 @@
+site:
+  language: 'en'
+  settings:
+    # General settings (see settings_schema.json).
+
+    # Site tags (`site.tags`) are not stored in theme site settings—do not add a `tags`
+    # field for `site` in settings_schema.json.
+    # Create tags: POST /api/v1/sites/:site_id/tags (see https://dev.baklib.cn/api).
+    # Liquid: `site.tags`; page-side tags use template schema `tag_picker` → `page.settings.tags`
+    # (see https://dev.baklib.cn/guide/objects).
+
+    # Custom HTML (see settings_schema.json)
+    head_html: ""
+    header_menu_html: |
+      <a href="/en/" class="hover:underline">Legal Hub</a>
+      <a href="/en/terms/" class="hover:underline">Terms</a>
+      <a href="/en/privacy/" class="hover:underline">Privacy</a>
+      <a href="/en/cookies/" class="hover:underline">Cookie</a>
+      <a href="/en/dpa/" class="hover:underline">DPA</a>
+      <a href="/en/security/" class="hover:underline">Security</a>
+      <a href="/en/subprocessors/" class="hover:underline">Subprocessors</a>
+    footer_menu_html: |
+      <a href="/en/" class="text-white hover:underline">Legal Hub</a>
+      <a href="/en/privacy/" class="text-white hover:underline">Privacy</a>
+      <a href="/en/terms/" class="text-white hover:underline">Terms</a>
+
+    # Legal Hub settings
+    brand_name: "Policy Library"
+    home_intro: "Centralized legal and compliance policies, notices, and supporting materials."
+    supported_language_prefixes: "en,zh"
+    default_language_prefix: "en"
+    enable_locale_redirect: true
+    geoip_api_url: "https://ipapi.co/json/"
+    company_legal_name: "【Company legal name】"
+    company_address: "【Company address】"
+    legal_contact_email: "legal@example.com"
+    privacy_contact_email: "privacy@example.com"
+    dpo_contact_email: ""
+    jurisdiction: ""
+    last_updated_label: "Last updated"
+    effective_date_label: "Effective date"
+    version_label: "Version"
+    show_change_log: true
+    home_categories_mode: "cards"

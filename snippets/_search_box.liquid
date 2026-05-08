@@ -1,0 +1,26 @@
+{%- comment -%}
+  Global search box.
+  Params:
+  - autofocus: boolean
+{%- endcomment -%}
+
+{% form_tag 'search' %}
+  <label class="relative flex max-w-2xl items-center rounded-xl border border-slate-200 bg-slate-50 transition-colors focus-within:border-slate-300 focus-within:bg-white">
+    <span class="pointer-events-none absolute left-4 text-slate-400">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="h-5 w-5" aria-hidden="true">
+        <circle cx="11" cy="11" r="8" />
+        <path d="m21 21-4.3-4.3" />
+      </svg>
+    </span>
+    <input
+      type="search"
+      name="{{ form.keywords_field_name }}"
+      value="{{ search.keywords | escape_once }}"
+      class="w-full rounded-xl border-0 bg-transparent py-3.5 pl-12 pr-4 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-0 md:text-base"
+      placeholder="{{ 'generic.placeholders.search' | t }}"
+      autocomplete="off"
+      {% if autofocus %}autofocus{% endif %}
+    />
+  </label>
+{% endform_tag %}
+

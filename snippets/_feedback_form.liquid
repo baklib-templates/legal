@@ -5,22 +5,22 @@
 {% assign posted_feedback = page.visitor_posted_feedback | default: {} %}
 
 {% form_tag 'feedback', page: page %}
-  <section class="space-y-5 p-4">
+  <section class="p-4 space-y-5">
     {% # 标题 %}
     {% if title %}
-      <h1 class="text-center text-2xl font-bold">{{ title }}</h1>
+      <h1 class="text-2xl font-bold text-center">{{ title }}</h1>
     {% endif %}
 
     {% # 反馈类型 %}
     <div
-      class="flex items-center justify-center flex-wrap gap-3"
+      class="flex flex-wrap gap-3 justify-center items-center"
       x-data="{ selected: '{{ posted_feedback.emoji | default: "" | escape_once }}' }"
     >
       {% if message_enabled %}
         {% for useful_type in useful_types %}
           <label
-            class="badge badge-soft inline-flex py-4 cursor-pointer"
-            :class="{ '!bg-primary-200 dark:!bg-primary-700 !border-primary-200 dark:!border-primary-700': selected === '{{ useful_type.emoji |  escape_once }}' }"
+            class="inline-flex py-4 cursor-pointer badge badge-soft"
+            :class="selected === '{{ useful_type.emoji |  escape_once }}' ? '!bg-primary-200 dark:!bg-primary-700 !border-primary-200 dark:!border-primary-700' : ''"
           >
             <input
               type="radio"
@@ -34,7 +34,7 @@
         {% endfor %}
       {% else %}
         {% for useful_type in useful_types %}
-          <button class="badge badge-soft inline-flex py-4" name="{{ form.feedback_emoji_field_name }}" value="{{ useful_type.emoji |  escape_once }}" :class="{ 'bg-gray-200': selected === '{{ useful_type.emoji | escape_once }}' }">
+          <button class="inline-flex py-4 badge badge-soft" name="{{ form.feedback_emoji_field_name }}" value="{{ useful_type.emoji |  escape_once }}" :class="{ 'bg-gray-200': selected === '{{ useful_type.emoji | escape_once }}' }">
             <span class="text-2xl">{{ useful_type.emoji }}</span>
             <span>{{ useful_type.label }}</span>
           </button>
@@ -46,7 +46,7 @@
       {%# 反馈内容 %}
       <fieldset class="fieldset">
         <legend class="fieldset-legend">{{ 'snippets.feedback_form.message_label' | t }}</legend>
-        <textarea class="textarea h-24 w-full" name="{{ form.feedback_message_field_name }}" placeholder="{{ 'snippets.feedback_form.message_placeholder' | t }}"></textarea>
+        <textarea class="w-full h-24 textarea" name="{{ form.feedback_message_field_name }}" placeholder="{{ 'snippets.feedback_form.message_placeholder' | t }}"></textarea>
         <div class="flex justify-between">
           <div class="label">
             {% if message_required %}
@@ -69,4 +69,3 @@
     </div>
   </section>
 {% endform_tag %}
-

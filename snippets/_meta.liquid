@@ -1,0 +1,31 @@
+{%- comment -%}
+  Generic meta card.
+  Params:
+  - page: policy page
+{%- endcomment -%}
+
+{%- assign p = page -%}
+{%- assign updated_at = p.edited_at | default: p.published_at -%}
+{%- assign published_at = p.published_at -%}
+
+<section class="rounded-2xl border border-slate-200 bg-white p-5 shadow-sm print:hidden">
+  <div class="flex flex-wrap items-start justify-between gap-4">
+    <div class="min-w-0">
+      <dl class="grid grid-cols-1 gap-2 text-sm text-slate-700 sm:grid-cols-2">
+        {%- if published_at -%}
+          <div class="flex gap-2">
+            <dt class="text-slate-500">{{ 'legal.meta.published_at' | t }}</dt>
+            <dd class="font-mono">{{ published_at | date: "%Y-%m-%d" }}</dd>
+          </div>
+        {%- endif -%}
+        {%- if updated_at -%}
+          <div class="flex gap-2">
+            <dt class="text-slate-500">{{ 'legal.meta.updated_at' | t }}</dt>
+            <dd class="font-mono">{{ updated_at | date: "%Y-%m-%d" }}</dd>
+          </div>
+        {%- endif -%}
+      </dl>
+    </div>
+  </div>
+</section>
+

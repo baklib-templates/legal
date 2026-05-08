@@ -1,0 +1,92 @@
+{%- comment -%}
+  Redirect from `/` to `/<lang>/` using GeoIP.
+  - Only runs on the root path `/`.
+  - Stores user preference in localStorage to avoid repeated redirects.
+  - External GeoIP API is allowed by requirement.
+{%- endcomment -%}
+
+{%- assign enabled = site.settings.enable_locale_redirect | default: true -%}
+{%- if enabled -%}
+  <script>
+    (function () {
+      try {
+        if (window.location.pathname !== "/") return;
+
+        var storageKey = "legalhub:lang";
+        var lockedKey = "legalhub:lang_locked";
+        var qs = new URLSearchParams(window.location.search);
+        var qsLang = qs.get("lang");
+
+        if (qsLang) {
+          localStorage.setItem(storageKey, qsLang);
+          localStorage.setItem(lockedKey, "1");
+        }
+
+        var locked = localStorage.getItem(lockedKey) === "1";
+        var preferred = localStorage.getItem(storageKey);
+
+        var defaultLang = "{{ site.settings.default_language_prefix | default: 'en' }}";
+
+        var supportedRaw = "{{ site.settings.supported_language_prefixes | default: 'en,zh' }}";
+        var supported = supportedRaw
+          .split(",")
+          .map(function (s) { return (s || "").trim(); })
+          .filter(Boolean);
+
+        function isSupported(lang) {
+          return supported.indexOf(lang) >= 0;
+        }
+
+        function toPath(lang) {
+          return "/" + lang + "/";
+        }
+
+        function go(lang) {
+          if (!lang) return;
+          if (!isSupported(lang)) lang = defaultLang;
+          var target = toPath(lang);
+          if (target === window.location.pathname) return;
+          window.location.replace(target);
+        }
+
+        if (preferred && isSupported(preferred)) {
+          go(preferred);
+          return;
+        }
+
+        if (locked) {
+          go(defaultLang);
+          return;
+        }
+
+        var api = "{{ site.settings.geoip_api_url | default: 'https://ipapi.co/json/' }}";
+
+        fetch(api, { credentials: "omit" })
+          .then(function (r) { return r.ok ? r.json() : null; })
+          .then(function (data) {
+            if (!data) return go(defaultLang);
+            var code =
+              (data.country_code || data.country || data.countryCode || "").toString().toUpperCase();
+
+            var mapped = (function () {
+              if (code === "CN") return "zh";
+              if (code === "TW") return "zh";
+              if (code === "HK") return "zh";
+              if (code === "JP") return "ja";
+              if (code === "KR") return "ko";
+              return defaultLang;
+            })();
+
+            localStorage.setItem(storageKey, mapped);
+            go(mapped);
+          })
+          .catch(function () {
+            go(defaultLang);
+          });
+      } catch (e) {
+        // swallow
+      }
+    })();
+  </script>
+{%- endif -%}
+

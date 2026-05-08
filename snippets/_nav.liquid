@@ -1,0 +1,58 @@
+{%- comment -%}
+  Primary navigation for Legal Hub.
+  Determines current language prefix from URL path: `/<lang>/...`.
+{%- endcomment -%}
+
+{%- assign supported_raw = site.settings.supported_language_prefixes | default: 'en,zh' -%}
+{%- assign supported = supported_raw | split: ',' -%}
+{%- assign default_lang = site.settings.default_language_prefix | default: 'en' -%}
+
+{%- assign path_parts = page.path | split: '/' -%}
+{%- assign maybe_lang = path_parts[1] | presence -%}
+{%- assign current_lang = default_lang -%}
+{%- if maybe_lang -%}
+  {%- assign found = false -%}
+  {%- for l in supported -%}
+    {%- assign lang = l | strip -%}
+    {%- if lang != blank and lang == maybe_lang -%}
+      {%- assign found = true -%}
+    {%- endif -%}
+  {%- endfor -%}
+  {%- if found -%}
+    {%- assign current_lang = maybe_lang -%}
+  {%- endif -%}
+{%- endif -%}
+
+{%- assign lang_root = '/' | append: current_lang | append: '/' -%}
+
+{%- assign nav_items = site.settings.legal_nav_items | presence -%}
+
+<nav class="flex min-w-0 flex-wrap items-center justify-end gap-x-3 gap-y-1 [&_a]:text-sm [&_a]:font-medium [&_a]:text-slate-600 [&_a]:transition-colors [&_a]:hover:text-slate-900 md:gap-x-4">
+  {%- if nav_items -%}
+    {{ nav_items }}
+  {%- else -%}
+    <a href="{{ lang_root }}">{{ 'legal.nav.home' | t }}</a>
+    <a href="{{ lang_root | append: 'terms/' }}">{{ 'legal.nav.terms' | t }}</a>
+    <a href="{{ lang_root | append: 'privacy/' }}">{{ 'legal.nav.privacy' | t }}</a>
+    <a href="{{ lang_root | append: 'cookies/' }}">{{ 'legal.nav.cookies' | t }}</a>
+    <a href="{{ lang_root | append: 'dpa/' }}">{{ 'legal.nav.dpa' | t }}</a>
+    <a href="{{ lang_root | append: 'security/' }}">{{ 'legal.nav.security' | t }}</a>
+    <a href="{{ lang_root | append: 'subprocessors/' }}">{{ 'legal.nav.subprocessors' | t }}</a>
+  {%- endif -%}
+</nav>
+
+<div class="ml-4 flex shrink-0 items-center gap-2">
+  {%- for l in supported -%}
+    {%- assign lang = l | strip -%}
+    {%- if lang != blank -%}
+      {%- assign href = '/' | append: lang | append: '/' -%}
+      <a
+        href="{{ href }}"
+        class="rounded-md px-2 py-1 text-xs font-medium {% if lang == current_lang %}bg-slate-900 text-white{% else %}text-slate-600 hover:bg-slate-100{% endif %}"
+        data-legal-lang="{{ lang }}"
+        onclick="try{localStorage.setItem('legalhub:lang','{{ lang }}');localStorage.setItem('legalhub:lang_locked','1')}catch(e){}"
+      >{{ lang }}</a>
+    {%- endif -%}
+  {%- endfor -%}
+</div>
+

@@ -1,0 +1,11 @@
+{%- comment -%}
+  TOC container. JS controller fills links.
+  Params:
+  - title (optional)
+{%- endcomment -%}
+
+<aside class="sticky top-24 hidden max-h-[calc(100vh-8rem)] w-64 shrink-0 overflow-y-auto border-l border-slate-100 pl-6 lg:block print:hidden" data-controller="toc">
+  <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">{{ title | default: ('legal.toc.title' | t) }}</div>
+  <nav class="mt-4 space-y-2 text-sm" data-toc-target="links"></nav>
+</aside>
+

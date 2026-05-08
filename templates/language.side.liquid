@@ -1,0 +1,85 @@
+{%- comment -%}
+  Language root page variant (side navigation layout): `/<lang>/`
+  Content parity with language.liquid:
+  - title + description
+  - search box
+  - channel cards
+{%- endcomment -%}
+
+{%- assign lang_root = page.path -%}
+{%- assign channels = page.children_in_list -%}
+
+<div class="flex-1 bg-white">
+  <div class="mx-auto flex max-w-7xl gap-10 px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <aside class="hidden w-60 shrink-0 lg:block">
+      <div class="sticky top-24 space-y-6">
+        <div>
+          <div class="text-sm font-semibold text-slate-900">{{ page.link_text | default: site.settings.brand_name | default: 'Policy Library' }}</div>
+          {%- if page.settings.description -%}
+            <p class="mt-2 line-clamp-6 text-sm leading-relaxed text-slate-600">{{ page.settings.description }}</p>
+          {%- endif -%}
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-slate-50 p-4">
+          <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">{{ 'generic.placeholders.search' | t }}</div>
+          <div class="mt-3">
+            {% render 'search_box' %}
+          </div>
+        </div>
+
+        <div class="rounded-2xl border border-slate-200 bg-white p-4">
+          <div class="text-xs font-semibold uppercase tracking-wide text-slate-500">{{ 'legal.home.choose_language' | t }}</div>
+          <div class="mt-3 flex flex-wrap gap-2">
+            {%- assign supported_raw = site.settings.supported_language_prefixes | default: 'en,zh' -%}
+            {%- assign supported = supported_raw | split: ',' -%}
+            {%- for l in supported -%}
+              {%- assign lang = l | strip -%}
+              {%- if lang != blank -%}
+                <a
+                  class="rounded-lg border border-slate-200 bg-white px-3 py-2 text-xs font-medium text-slate-700 hover:bg-slate-50"
+                  href="/{{ lang }}/"
+                  onclick="try{localStorage.setItem('legalhub:lang','{{ lang }}');localStorage.setItem('legalhub:lang_locked','1')}catch(e){}"
+                >{{ lang }}</a>
+              {%- endif -%}
+            {%- endfor -%}
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <main class="min-w-0 flex-1">
+      <header class="mb-10 space-y-4 border-b border-slate-200 pb-10">
+        <h1 class="text-3xl font-semibold tracking-tight text-slate-900 md:text-4xl">{{ page.link_text | default: site.settings.brand_name | default: 'Policy Library' }}</h1>
+        {%- if page.settings.description -%}
+          <div class="max-w-3xl text-base leading-relaxed text-slate-600">{{ page.settings.description }}</div>
+        {%- endif -%}
+        <div class="pt-2 lg:hidden">
+          {% render 'search_box' %}
+        </div>
+      </header>
+
+      {% render 'cards', lang_root: lang_root, channels: channels %}
+    </main>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:schema.templates.language_side.name",
+    "thumb_url": "images/theme/index-list.png",
+    "preview_image_urls": [
+      "images/theme/index-list.png"
+    ],
+    "description": "t:schema.templates.language_side.description",
+    "sub_page_templates": ["channel"],
+    "settings": [
+      {
+        "id": "description",
+        "type": "textarea",
+        "to_markdown": true,
+        "label": "t:schema.templates.language.settings.description.label"
+      }
+    ]
+  }
+{% endschema %}
+

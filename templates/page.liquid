@@ -1,0 +1,106 @@
+{%- comment -%}
+  Unified content page template.
+  - Used by Legal Hub policies and generic content pages.
+  - Readability-first long-form layout with governance meta, TOC, version switcher, actions.
+{%- endcomment -%}
+
+{%- assign page_title = page.link_text | presence -%}
+{%- assign page_thumb_image_url = page.settings.thumb_image_url | presence -%}
+{%- assign page_description = page.settings.description | presence -%}
+{%- assign page_content = page.settings.content | presence -%}
+
+<div class="flex-1 bg-white">
+  <div class="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+    <div class="mx-auto flex max-w-6xl gap-10">
+      <article class="min-w-0 flex-1">
+        <header class="mb-8 space-y-5 border-b border-slate-100 pb-8">
+          <div class="flex flex-wrap items-center gap-2 text-xs text-slate-500 md:text-sm">
+            {% for tag in page.tags %}
+              <a href="{{ tag.path }}" class="rounded-full bg-slate-100 px-2.5 py-1 text-xs font-medium text-slate-700 transition-colors hover:bg-slate-200 md:text-sm">
+                {{ tag.name }}
+              </a>
+            {% endfor %}
+
+            {% if page.published_at %}
+              <span class="text-slate-300">·</span>
+              <time datetime="{{ page.published_at | date: '%Y-%m-%d' }}" class="inline-flex items-center gap-1 font-mono text-slate-500">
+                {{ page.published_at | date: "%Y-%m-%d" }}
+              </time>
+            {% endif %}
+
+            {% if site.settings.is_show_visit_count %}
+              <span class="text-slate-300">·</span>
+              <span class="font-mono text-slate-500">{{ page.visits_count }} {{ 'templates.page.visit_count' | t }}</span>
+            {% endif %}
+          </div>
+
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            {% render 'version_switcher', page: page %}
+            {% render 'actions' %}
+          </div>
+
+          <h1 class="text-3xl font-semibold leading-tight tracking-tight text-slate-900 md:text-4xl md:leading-tight">
+            {{ page_title }}
+          </h1>
+
+          {%- if page_description -%}
+            <p class="max-w-[80ch] text-base leading-relaxed text-slate-600">{{ page_description }}</p>
+          {%- endif -%}
+
+          {% render 'meta', page: page %}
+        </header>
+
+        {% if page_thumb_image_url %}
+          <div class="mb-10 overflow-hidden rounded-xl border border-slate-100 bg-slate-50 md:max-h-[min(50vh,480px)]">
+            <img src="{{ page_thumb_image_url }}" alt="" class="w-full object-cover" loading="eager" />
+          </div>
+        {% endif %}
+
+        <div class="max-w-full overflow-x-auto">
+          <div
+            id="page-content"
+            class="ProseMirror prose max-w-[80ch] text-slate-700 sm:prose-base lg:prose-lg focus:outline-none [&_a]:font-medium [&_a]:text-slate-900 [&_a]:underline-offset-2 [&_h1,&_h2,&_h3,&_h4]:scroll-mt-24 [&_h1,&_h2,&_h3,&_h4]:text-slate-900"
+            data-toc-scope="true"
+          >
+            {{ page_content }}
+          </div>
+        </div>
+
+        {% if site.settings.is_allow_feedback %}
+          <section class="mx-auto mt-14 max-w-[80ch] border-t border-slate-100 pt-10">
+            {% render 'feedback_button', page: page %}
+          </section>
+        {% endif %}
+      </article>
+
+      {% render 'toc' %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "t:schema.templates.page.name",
+    "settings": [
+      {
+        "id": "description",
+        "type": "textarea",
+        "to_markdown": true,
+        "label": "t:schema.templates.page.settings.description.label"
+      },
+      {
+        "id": "thumb_image_url",
+        "type": "image_picker",
+        "ratio": "4:1",
+        "width": 640,
+        "label": "t:schema.templates.page.settings.thumb_image_url.label"
+      },
+      {
+        "id": "content",
+        "type": "richtext",
+        "to_markdown": true,
+        "label": "t:schema.templates.page.settings.content.label"
+      }
+    ]
+  }
+{% endschema %}

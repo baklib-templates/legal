@@ -1,0 +1,49 @@
+{% comment %}
+  News 列表工具条：左侧标签（跳转 tag.path），右侧按发布日期排序。
+  参数：
+  - sort_base: 排序链接前缀路径（首页为 site.index_path，标签页为 tag.path）
+  - active_tag: 当前标签对象；首页不传或传 nil
+  - sort_mode: published_desc | published_asc（由模板根据 params.sort 赋值）
+  - sort_controls: 传 false 时隐藏右侧排序（标签页无法与当前分页实现对齐时应关闭）
+{% endcomment %}
+
+{% assign sort_desc_url = sort_base | append: '?sort=published_desc' %}
+{% assign sort_asc_url = sort_base | append: '?sort=published_asc' %}
+
+<div class="mb-10 flex flex-col gap-4 border-b border-slate-200 pb-6 sm:flex-row sm:items-center sm:justify-between">
+  <div class="-mx-1 min-w-0 flex-1 overflow-x-auto px-1">
+    <ul class="flex flex-nowrap gap-x-6 gap-y-2 text-sm font-medium md:gap-x-8">
+      <li class="shrink-0">
+        {% unless active_tag %}
+          <span class="border-b-2 border-slate-900 pb-1 text-slate-900">{{ 'generic.all_tags' | t }}</span>
+        {% else %}
+          <a href="{{ site.index_path }}" class="border-b-2 border-transparent pb-1 text-slate-500 transition-colors hover:text-slate-900">{{ 'generic.all_tags' | t }}</a>
+        {% endunless %}
+      </li>
+      {% for site_tag in site.tags %}
+        <li class="shrink-0">
+          {% if active_tag != blank and active_tag.path == site_tag.path %}
+            <span class="border-b-2 border-slate-900 pb-1 text-slate-900">{{ site_tag.name }}</span>
+          {% else %}
+            <a href="{{ site_tag.path }}" class="border-b-2 border-transparent pb-1 text-slate-500 transition-colors hover:text-slate-900">{{ site_tag.name }}</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  {% unless sort_controls == false %}
+    <div class="flex shrink-0 flex-wrap items-center gap-3 text-sm">
+      <span class="text-slate-400">{{ 'templates.index.sort_label' | t }}</span>
+      <div class="flex items-center gap-2">
+        {% if sort_mode == 'published_asc' %}
+          <a href="{{ sort_desc_url }}" class="rounded-full px-3 py-1 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900">{{ 'templates.index.sort_newest' | t }}</a>
+          <span class="rounded-full bg-slate-900 px-3 py-1 text-white">{{ 'templates.index.sort_oldest' | t }}</span>
+        {% else %}
+          <span class="rounded-full bg-slate-900 px-3 py-1 text-white">{{ 'templates.index.sort_newest' | t }}</span>
+          <a href="{{ sort_asc_url }}" class="rounded-full px-3 py-1 text-slate-600 transition-colors hover:bg-slate-100 hover:text-slate-900">{{ 'templates.index.sort_oldest' | t }}</a>
+        {% endif %}
+      </div>
+    </div>
+  {% endunless %}
+</div>

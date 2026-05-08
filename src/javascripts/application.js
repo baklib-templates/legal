@@ -1,75 +1,48 @@
-import "@hotwired/turbo";
-import Alpine from "alpinejs";
-import videoPlayer from "./video_player";
-import { tns } from "tiny-slider";
-import './controllers';
-window.tns = tns;
+import * as Turbo from "@hotwired/turbo"
+import Alpine from 'alpinejs'
+import collapse from '@alpinejs/collapse'
+import { Application } from "@hotwired/stimulus"
+import LoadMoreController from "./../controllers/load_more_controller"
 
-Alpine.data("videoPlayer", videoPlayer);
-window.Alpine = Alpine;
+window.Alpine = Alpine
+Alpine.plugin(collapse)
+Alpine.start()
 
-Alpine.start();
+import "./../controllers"
+const application = Application.start()
+application.register("load-more", LoadMoreController)
 
-(function () {
-  // 定义 themeSwitcher class，用于切换主题
-  class ThemeSwitcher {
-    toggleTheme(name) {
-      // console.log("toggleTheme", name)
-      if (name === "dark" || name === "light") {
-        document.documentElement.dataset.theme = name;
-        localStorage.theme = name;
-      } else {
-        document.documentElement.removeAttribute("data-theme");
-        localStorage.removeItem("theme");
+function wireLegalActions() {
+  document.querySelectorAll("[data-legal-action]").forEach((el) => {
+    if (el.dataset.legalWired === "1") return;
+    el.dataset.legalWired = "1";
+    el.addEventListener("click", async () => {
+      const action = el.dataset.legalAction;
+      if (action === "print" || action === "pdf") {
+        window.print();
+        return;
       }
-    }
-
-    get storedTheme() {
-      const theme = localStorage.theme;
-      if (theme === "dark" || theme === "light") {
-        return theme;
+      if (action === "copy_link") {
+        try {
+          await navigator.clipboard.writeText(window.location.href);
+          el.classList.add("border-success");
+          setTimeout(() => el.classList.remove("border-success"), 1200);
+        } catch (e) {
+          // fallback
+          const input = document.createElement("input");
+          input.value = window.location.href;
+          document.body.appendChild(input);
+          input.select();
+          document.execCommand("copy");
+          input.remove();
+        }
       }
-      return null;
-    }
-
-    init() {
-      // console.log("init theme switcher", this.storedTheme)
-      const theme = this.storedTheme;
-      if (theme) {
-        this.toggleTheme(theme);
-      }
-      document
-        .querySelectorAll(
-          'input.theme-controller[type="checkbox"][value="dark"]',
-        )
-        .forEach((controller) => {
-          controller.checked = this.storedTheme === "dark";
-          this.mount(controller);
-        });
-    }
-
-    mount(controller) {
-      // console.log("mount theme controller")
-      controller.addEventListener("click", (e) => {
-        // console.log("click theme controller")
-        localStorage.theme = e.target.checked ? "dark" : "light";
-        this.toggleTheme(localStorage.theme);
-      });
-      const theme = this.storedTheme;
-      if (theme) {
-        this.toggleTheme(theme);
-        controller.checked = theme === "dark";
-      } else {
-        controller.checked = window.matchMedia(
-          "(prefers-color-scheme: dark)",
-        ).matches;
-      }
-    }
-  }
-
-  window.themeSwitcher = new ThemeSwitcher();
-  window.themeSwitcher.init();
-  document.addEventListener("turbo:load", () => {
-    window.themeSwitcher.init();
+    });
   });
-})();
+}
+
+document.addEventListener("turbo:load", () => {
+  wireLegalActions();
+});
+
+wireLegalActions();

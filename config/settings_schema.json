@@ -1,20 +1,20 @@
 [
   {
     "name": "theme_info",
-    "theme_name": "base",
+    "theme_name": "legal",
     "theme_label": "t:schema.theme_label",
     "theme_description": "t:schema.theme_description",
-    "theme_version": "0.0.1",
+    "theme_version": "2.0.2",
     "theme_syntax_version": "v2",
     "theme_scope": "cms",
     "theme_author": "Baklib",
-    "theme_documentation_url": "https://www.baklib.com/blog",
-    "theme_support_url": "https://www.baklib.com/",
-    "theme_thumb_url": "images/theme/${lang}/thumb.png",
+    "theme_documentation_url": "https://help.baklib.cn/themes",
+    "theme_support_url": "https://help.baklib.cn/themes",
+    "theme_thumb_url": "images/theme/thumb.png",
     "theme_preview_images": [
-      "images/theme/${lang}/preview1.png",
-      "images/theme/${lang}/preview2.png",
-      "images/theme/${lang}/preview3.png"
+      "images/theme/release-guide.png",
+      "images/theme/index-list.png",
+      "images/theme/page.png"
     ],
     "theme_languages": [
       {
@@ -22,163 +22,230 @@
         "value": "zh-CN"
       },
       {
+        "name": "한국어",
+        "value": "ko"
+      },
+      {
         "name": "English",
         "value": "en"
+      },
+      {
+        "name": "日本語",
+        "value": "ja"
       }
     ],
     "recommendations": {
       "color_schemas": {
-        "scheme1": {
-          "name": "配色方案1",
+        "fashion": {
+          "name": "时尚",
           "colors": {
-            "--theme-color-base-100": "#f8f9ff",
-            "--theme-color-base-200": "#f5f7ff",
-            "--theme-color-base-300": "#e6eaf7",
-            "--theme-color-base-content": "#181a1f",
-            "--theme-color-primary": "#e0005b",
-            "--theme-color-primary-content": "#3a1a1c",
-            "--theme-color-secondary": "#e6f7e6",
-            "--theme-color-secondary-content": "#2a1a1c",
-            "--theme-color-accent": "#5fd3b3",
-            "--theme-color-accent-content": "#1a2a1c",
-            "--theme-color-neutral": "#5a5a5a",
-            "--theme-color-neutral-content": "#f8f9ff",
-            "--theme-color-info": "#3a8fff",
-            "--theme-color-info-content": "#f5f7ff",
-            "--theme-color-success": "#4caf50",
-            "--theme-color-success-content": "#f5f7ff",
-            "--theme-color-warning": "#ffc107",
-            "--theme-color-warning-content": "#f5f7ff",
-            "--theme-color-error": "#ff5252",
-            "--theme-color-error-content": "#f5f7ff"
+            "--theme-color-primary": "#3D50E0",
+            "--theme-color-secondary": "#E91E63",
+            "--theme-color-accent": "#AAAAAA",
+            "--theme-color-info": "#2196F3",
+            "--theme-color-success": "#4CAF50",
+            "--theme-color-warning": "#FFC107"
           }
         },
-        "scheme2": {
-          "name": "配色方案2",
+        "old_school": {
+          "name": "复古",
           "colors": {
-            "--theme-color-base-100": "#181a2a",
-            "--theme-color-base-200": "#23234a",
-            "--theme-color-base-300": "#2e2e6a",
-            "--theme-color-base-content": "#f5f6fa",
-            "--theme-color-primary": "#4ad7c8",
-            "--theme-color-primary-content": "#2e3a3f",
-            "--theme-color-secondary": "#000000",
-            "--theme-color-secondary-content": "#ffffff",
-            "--theme-color-accent": "#5fd3b3",
-            "--theme-color-accent-content": "#1a2a1c",
-            "--theme-color-neutral": "#3d3d5a",
-            "--theme-color-neutral-content": "#fafbff",
-            "--theme-color-info": "#3a8fff",
-            "--theme-color-info-content": "#f5f7ff",
-            "--theme-color-success": "#4fdc7b",
-            "--theme-color-success-content": "#f6fff9",
-            "--theme-color-warning": "#ffd966",
-            "--theme-color-warning-content": "#fffbe6",
-            "--theme-color-error": "#ff5252",
-            "--theme-color-error-content": "#f5f7ff"
+            "--theme-color-primary": "#9C27B0",
+            "--theme-color-secondary": "#673AB7",
+            "--theme-color-accent": "#AAAAAA",
+            "--theme-color-info": "#418CC8",
+            "--theme-color-success": "#29B52F",
+            "--theme-color-warning": "#FFC107"
           }
         }
       }
     }
   },
   {
-    "name": "t:schema.settings.brand.title",
+    "name": "t:schema.generic.name",
     "settings": [
       {
-        "id": "logo_url",
-        "type": "image_picker",
-        "width": 300,
-        "height": 80,
-        "label": "t:schema.settings.brand.logo_url.label",
-        "info": "t:schema.settings.brand.logo_url.info"
+        "id": "sort_rule",
+        "type": "select",
+        "label": "t:schema.generic.settings.sort_rule.label",
+        "choices": [
+          {"label": "t:schema.generic.settings.sort_rule.options.created_at_desc", "value": "-created_at"},
+          {"label": "t:schema.generic.settings.sort_rule.options.created_at_asc", "value": "created_at"},
+          {"label": "t:schema.generic.settings.sort_rule.options.edited_at_desc", "value": "-edited_at"},
+          {"label": "t:schema.generic.settings.sort_rule.options.edited_at_asc", "value": "edited_at"},
+          {"label": "t:schema.generic.settings.sort_rule.options.visit_count_desc", "value": "-visit_count"},
+          {"label": "t:schema.generic.settings.sort_rule.options.visit_count_asc", "value": "visit_count"},
+          {"label": "t:schema.generic.settings.sort_rule.options.manual", "value": ""}
+        ],
+        "default": "-created_at"
       },
       {
-        "id": "dark_logo_url",
-        "type": "image_picker",
-        "width": 300,
-        "height": 80,
-        "label": "t:schema.settings.brand.dark_logo_url.label",
-        "info": "t:schema.settings.brand.dark_logo_url.info"
+        "id": "is_allow_feedback",
+        "type": "checkbox",
+        "label": "t:schema.generic.settings.is_allow_feedback.label",
+        "default": true
       },
       {
-        "id": "slogan",
-        "type": "text",
-        "label": "t:schema.settings.brand.slogan.label",
-        "info": "t:schema.settings.brand.slogan.info"
+        "id": "is_show_visit_count",
+        "type": "checkbox",
+        "label": "t:schema.generic.settings.is_show_visit_count.label",
+        "default": true
+      },
+      {
+        "id": "is_allow_header",
+        "type": "checkbox",
+        "label": "t:schema.generic.settings.is_allow_header.label",
+        "default": true
+      },
+      {
+        "id": "is_allow_footer",
+        "type": "checkbox",
+        "label": "t:schema.generic.settings.is_allow_footer.label",
+        "default": true
       }
     ]
   },
   {
-    "name": "t:schema.settings.contact.title",
+    "name": "t:schema.custom_html.name",
     "settings": [
       {
-        "id": "contact_info",
-        "type": "textarea",
-        "label": "t:schema.settings.contact.contact_info.label",
-        "info": "t:schema.settings.contact.contact_info.info"
+        "id": "head_html",
+        "type": "html",
+        "label": "t:schema.custom_html.settings.head_html.label",
+        "info": "t:schema.custom_html.settings.head_html.info",
+        "rows": 10,
+        "placeholder": "t:schema.custom_html.settings.head_html.placeholder"
       },
       {
-        "id": "wechat_qrcode_url",
-        "type": "image_picker",
-        "label": "t:schema.settings.contact.wechat_qrcode_url.label",
-        "info": "t:schema.settings.contact.wechat_qrcode_url.info"
+        "id": "header_menu_html",
+        "type": "html",
+        "label": "t:schema.custom_html.settings.header_menu_html.label",
+        "info": "t:schema.custom_html.settings.header_menu_html.info",
+        "rows": 6,
+        "placeholder": "t:schema.custom_html.settings.header_menu_html.placeholder"
       },
       {
-        "id": "qy_wechat_qrcode_url",
-        "type": "image_picker",
-        "label": "t:schema.settings.contact.qy_wechat_qrcode_url.label",
-        "info": "t:schema.settings.contact.qy_wechat_qrcode_url.info"
-      },
-      {
-        "id": "qq_qrcode_url",
-        "type": "image_picker",
-        "label": "t:schema.settings.contact.qq_qrcode_url.label",
-        "info": "t:schema.settings.contact.qq_qrcode_url.info"
+        "id": "footer_menu_html",
+        "type": "html",
+        "label": "t:schema.custom_html.settings.footer_menu_html.label",
+        "info": "t:schema.custom_html.settings.footer_menu_html.info",
+        "rows": 6,
+        "placeholder": "t:schema.custom_html.settings.footer_menu_html.placeholder"
       }
     ]
   },
   {
-    "name": "t:schema.settings.footer.title",
+    "name": "t:schema.legal_settings.name",
     "settings": [
       {
-        "id": "footer_bg_color",
-        "type": "color",
-        "label": "t:schema.settings.footer.footer_bg_color.label",
-        "default": "#181a2a",
-        "info": "t:schema.settings.footer.footer_bg_color.info"
+        "id": "brand_name",
+        "type": "text",
+        "label": "t:schema.legal_settings.brand_name.label",
+        "default": "Policy Library"
       },
       {
-        "id": "footer_text_color",
-        "type": "color",
-        "label": "t:schema.settings.footer.footer_text_color.label",
-        "default": "#e5e7eb",
-        "info": "t:schema.settings.footer.footer_text_color.info"
-      },
-      {
-        "id": "footer_description",
+        "id": "home_intro",
         "type": "textarea",
-        "label": "t:schema.settings.footer.footer_description.label",
-        "info": "t:schema.settings.footer.footer_description.info"
+        "label": "t:schema.legal_settings.home_intro.label",
+        "default": "Legal and compliance policies, notices, and supporting materials."
       },
       {
-        "id": "copyright",
+        "id": "supported_language_prefixes",
         "type": "text",
-        "label": "t:schema.settings.footer.copyright.label",
-        "info": "t:schema.settings.footer.copyright.info",
-        "default": "某某科技"
+        "label": "t:schema.legal_settings.supported_language_prefixes.label",
+        "info": "t:schema.legal_settings.supported_language_prefixes.info",
+        "default": "en,zh"
       },
       {
-        "id": "icp_beian",
+        "id": "default_language_prefix",
         "type": "text",
-        "label": "t:schema.settings.footer.icp_beian.label"
+        "label": "t:schema.legal_settings.default_language_prefix.label",
+        "default": "en"
       },
       {
-        "id": "footer_nav_links",
-        "type": "code",
-        "language": "html",
-        "label": "t:schema.settings.footer.nav_links.label",
-        "info": "t:schema.settings.footer.nav_links.info",
-        "default": "preset:footer_nav_links.html"
+        "id": "enable_locale_redirect",
+        "type": "checkbox",
+        "label": "t:schema.legal_settings.enable_locale_redirect.label",
+        "default": true
+      },
+      {
+        "id": "geoip_api_url",
+        "type": "text",
+        "label": "t:schema.legal_settings.geoip_api_url.label",
+        "info": "t:schema.legal_settings.geoip_api_url.info",
+        "default": "https://ipapi.co/json/"
+      },
+      {
+        "id": "company_legal_name",
+        "type": "text",
+        "label": "t:schema.legal_settings.company_legal_name.label"
+      },
+      {
+        "id": "company_address",
+        "type": "textarea",
+        "label": "t:schema.legal_settings.company_address.label"
+      },
+      {
+        "id": "legal_contact_email",
+        "type": "text",
+        "label": "t:schema.legal_settings.legal_contact_email.label",
+        "default": "legal@example.com"
+      },
+      {
+        "id": "privacy_contact_email",
+        "type": "text",
+        "label": "t:schema.legal_settings.privacy_contact_email.label",
+        "default": "privacy@example.com"
+      },
+      {
+        "id": "dpo_contact_email",
+        "type": "text",
+        "label": "t:schema.legal_settings.dpo_contact_email.label"
+      },
+      {
+        "id": "jurisdiction",
+        "type": "text",
+        "label": "t:schema.legal_settings.jurisdiction.label"
+      },
+      {
+        "id": "last_updated_label",
+        "type": "text",
+        "label": "t:schema.legal_settings.last_updated_label.label",
+        "default": "Last updated"
+      },
+      {
+        "id": "effective_date_label",
+        "type": "text",
+        "label": "t:schema.legal_settings.effective_date_label.label",
+        "default": "Effective date"
+      },
+      {
+        "id": "version_label",
+        "type": "text",
+        "label": "t:schema.legal_settings.version_label.label",
+        "default": "Version"
+      },
+      {
+        "id": "show_change_log",
+        "type": "checkbox",
+        "label": "t:schema.legal_settings.show_change_log.label",
+        "default": true
+      },
+      {
+        "id": "home_categories_mode",
+        "type": "radio",
+        "label": "t:schema.legal_settings.home_categories_mode.label",
+        "choices": [
+          { "label": "t:schema.legal_settings.home_categories_mode.choices.cards", "value": "cards" },
+          { "label": "t:schema.legal_settings.home_categories_mode.choices.accordion", "value": "accordion" }
+        ],
+        "default": "cards"
+      },
+      {
+        "id": "legal_nav_items",
+        "type": "html",
+        "label": "t:schema.legal_settings.legal_nav_items.label",
+        "info": "t:schema.legal_settings.legal_nav_items.info"
       }
     ]
   }

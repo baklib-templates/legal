@@ -1,0 +1,19 @@
+{% comment %} Nested child pages under a list row {% endcomment %}
+{%- assign page_per = per | default: 15 -%}
+{%- assign sub_pages = page.children_in_list | order_by: '-created_at' | limit: page_per %}
+{%- assign sub_pages_count = page.children_in_list | size -%}
+
+{%- if sub_pages_count > 0 -%}
+  <ul class="mt-4 list-none space-y-1 border-l-2 border-slate-200 pl-4">
+    {% for child in sub_pages %}
+      <li>
+        <a href="{{ child.path }}" class="flex items-center gap-2 py-1 text-sm text-slate-600 transition-colors hover:text-slate-900">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="h-3.5 w-3.5 shrink-0 text-slate-400" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="m9 18 6-6-6-6" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          <span class="truncate">{{ child.link_text }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+{%- endif -%}

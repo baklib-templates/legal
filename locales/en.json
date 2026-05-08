@@ -1,16 +1,144 @@
 {
-    "templates": {
-      "video-page": {
-        "recent_videos": "Recent Videos",
-        "recent_videos_description": "Explore the latest video content, bringing you cutting-edge information and in-depth analysis."
-      }
+  "snippets": {
+    "feedback_form": {
+      "title": "Submit Feedback",
+      "message_label": "Message",
+      "message_placeholder": "Please enter your feedback",
+      "message_required": "Feedback cannot be empty",
+      "submit": "Submit",
+      "cancel": "Cancel"
     },
-    "snippets": {
-      "empty": {
-        "title": "No Content Found",
-        "description": "Please try other search keywords or browse other categories",
-        "button_text": "Back to Home"
-      }
+    "feedback_button": {
+      "title_posted": "Thank you for your feedback",
+      "title_unposted": "Submit Feedback"
+    }
+  },
+  "templates": {
+    "index": {
+      "list": {
+        "all": "All"
+      },
+      "sort_label": "Sort",
+      "sort_newest": "Newest",
+      "sort_oldest": "Oldest"
+    },
+    "page": {
+      "current_version": "Current",
+      "visit_count": "Visits"
+    }
+  },
+  "paginate": {
+    "showing": "currently showing",
+    "total": "total",
+    "records": "records",
+    "previous": "Previous Page",
+    "next": "Next Page"
+  },
+  "generic": {
+    "feedback_created_at": "Last Feedback At",
+    "empty": "No Data",
+    "all_tags": "All Tags",
+    "recent_updates": "Recent Updates",
+    "recent_memo_note": "Showing the 5 latest items from the home listing (memo view).",
+    "back_to_home": "Back to Home",
+    "copyright": "Copyright",
+    "submit": "Submit",
+    "placeholders": {
+      "search": "Search",
+      "input_feedback": "Please enter your feedback"
+    },
+    "buttons": {
+      "close": "Close",
+      "signout": "Sign Out",
+      "signin": "Sign In"
+    },
+    "tags_heading": "Tags",
+    "accessibility": {
+      "close_sidebar": "Close menu"
+    }
+  },
+  "legal": {
+    "nav": {
+      "home": "Home",
+      "terms": "Terms",
+      "privacy": "Privacy",
+      "cookies": "Cookie",
+      "dpa": "DPA",
+      "security": "Security",
+      "subprocessors": "Subprocessors"
+    },
+    "home": {
+      "intro": "Centralized legal and compliance policies. Choose a language to continue.",
+      "choose_language": "Choose a language",
+      "redirect_note": "We may automatically redirect you to a localized version based on your IP address."
+    },
+    "toc": {
+      "title": "On this page"
+    },
+    "meta": {
+      "published_at": "Published",
+      "updated_at": "Updated"
+    },
+    "version_switcher": {
+      "label": "Version",
+      "current": "Current"
+    },
+    "actions": {
+      "print": "Print",
+      "copy_link": "Copy link",
+      "export_pdf": "Export PDF",
+      "view_all": "View all",
+      "open": "Open"
+    }
+  },
+  "demo": {
+    "pages": {
+      "home": {
+        "settings": {
+          "title": "Latest posts",
+          "description": "Blog posts, news, and announcements in one place.<br class=\"hidden sm:inline\"/>Stay on top of what matters."
+        }
+      },
+      "children": [
+        {
+          "slug": "how-to-write-a-good-post",
+          "name": "How to write a strong post: structure and checklist",
+          "settings": {
+            "title": "How to write a strong post: structure and checklist",
+            "description": "From headline to body—a practical structure and checklist for blog and news content.",
+            "tags": [
+              "Blog"
+            ],
+            "content": "<h2>Suggested structure</h2>\n<ol>\n<li><strong>Headline</strong>: clear topic and reader benefit</li>\n<li><strong>Lead</strong>: 1–2 sentences for context and takeaway</li>\n<li><strong>Body</strong>: problem → approach → examples → caveats</li>\n<li><strong>Close</strong>: recap key points and next steps</li>\n</ol>\n\n<h2>Checklist</h2>\n<ul>\n<li>Is the audience and scenario explicit?</li>\n<li>Are there reusable steps or templates?</li>\n<li>Do you add visuals, code, or screenshots where helpful?</li>\n<li>Is it easy to find later (tags, summary, cover image)?</li>\n</ul>\n"
+          }
+        },
+        {
+          "slug": "news-new-content-channels",
+          "name": "News: new content channels are live",
+          "settings": {
+            "title": "News: new content channels are live",
+            "description": "Dedicated channels for News, Announcements, and Blog—clearer taxonomy and a smoother read.",
+            "tags": [
+              "News",
+              "Announcement"
+            ],
+            "content": "<h2>What changed</h2>\n<ul>\n<li>Filter content by tags (blog, news, announcements, and more)</li>\n<li>The home page highlights the latest items; sorting rules are configurable</li>\n<li>Information architecture tuned for content sites and navigation</li>\n</ul>\n\n<h2>How to use it</h2>\n<ul>\n<li>Ship product updates under <strong>News</strong></li>\n<li>Post critical notices under <strong>Announcements</strong></li>\n<li>Turn playbooks and long-form tips into <strong>Blog</strong> articles</li>\n</ul>\n"
+          }
+        },
+        {
+          "slug": "announcement-holiday-support-hours",
+          "name": "Announcement: holiday support hours",
+          "settings": {
+            "title": "Announcement: holiday support hours",
+            "description": "Live chat and ticket response hours during public holidays.",
+            "tags": [
+              "Announcement",
+              "Notice"
+            ],
+            "content": "<h2>Support hours</h2>\n<p>During holidays, online support hours will be <strong>10:00 – 18:00</strong>.</p>\n\n<h2>Impact</h2>\n<ul>\n<li>Live chat: responses may be slightly slower</li>\n<li>Tickets: urgent issues are prioritized</li>\n<li>Knowledge base: browse and search as usual</li>\n</ul>\n\n<h2>Contact</h2>\n<p>For emergencies, reach us via the site footer or submit a ticket.</p>\n"
+          }
+        }
+      ]
     }
   }
-  
+}
