@@ -11,7 +11,7 @@ site:
 
     # Custom HTML (see settings_schema.json)
     head_html: ""
-    footer_menu_html: |
+    footer_html: |
       <a href="/en/" class="text-white hover:underline">Legal Hub</a>
       <a href="/en/privacy/" class="text-white hover:underline">Privacy</a>
       <a href="/en/terms/" class="text-white hover:underline">Terms</a>

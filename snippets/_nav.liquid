@@ -25,7 +25,7 @@
 
 {%- assign lang_root = '/' | append: current_lang | append: '/' -%}
 
-{%- assign nav_items = site.settings.legal_nav_items | presence -%}
+{%- assign nav_items = site.settings.header_html | presence -%}
 
 <nav class="flex min-w-0 flex-wrap items-center justify-end gap-x-3 gap-y-1 [&_a]:text-sm [&_a]:font-medium [&_a]:text-slate-600 [&_a]:transition-colors [&_a]:hover:text-slate-900 md:gap-x-4">
   {%- if nav_items -%}

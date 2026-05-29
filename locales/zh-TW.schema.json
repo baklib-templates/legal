@@ -4,17 +4,9 @@
   "templates": {
     "page": {
       "name": "文章頁面",
-      "description": "文章頁面模板",
       "settings": {
-        "title": {
-          "label": "標題",
-          "info": "顯示在正文上方的文章標題"
-        },
         "description": {
           "label": "摘要"
-        },
-        "tags": {
-          "label": "標籤"
         },
         "thumb_image_url": {
           "label": "封面圖"
@@ -24,41 +16,52 @@
         }
       }
     },
-    "index_list": {
-      "name": "首頁（列表）",
-      "description": "列表樣式首頁，含搜尋與標籤篩選。"
+    "index": {
+      "name": "首頁（根）",
+      "description": "根路徑 / 首頁，含語言選擇與搜尋。"
     },
-    "index_card": {
-      "name": "首頁（卡片）",
-      "description": "卡片網格樣式首頁，支援依發佈時間排序。"
+    "index_side": {
+      "name": "首頁（側欄）",
+      "description": "側欄導航樣式的根首頁布局。"
+    },
+    "channel": {
+      "name": "欄目",
+      "description": "語言根下的欄目頁，列出該欄目下的政策文件。",
+      "settings": {
+        "description": {
+          "label": "摘要"
+        }
+      }
+    },
+    "language": {
+      "name": "語言首頁",
+      "description": "語言根頁，列出各欄目。",
+      "settings": {
+        "description": {
+          "label": "摘要"
+        }
+      }
+    },
+    "language_side": {
+      "name": "語言首頁（側欄）",
+      "description": "側欄導航樣式的語言根布局。"
     }
   },
   "generic": {
     "name": "通用設置",
     "settings": {
+      "logo_url": {
+        "label": "LOGO 圖片地址",
+        "info": "可選；填寫後頁頭將展示該 LOGO，否則展示網站圖示與網站名稱。"
+      },
       "is_allow_feedback": {
         "label": "是否展示用戶反饋"
-      },
-      "is_show_visit_count": {
-        "label": "是否展示訪問量"
       },
       "is_allow_header": {
         "label": "是否展示頁頭Header部分"
       },
       "is_allow_footer": {
         "label": "是否展示頁腳Footer部分"
-      },
-      "sort_rule": {
-        "label": "首頁頁面列表展示規則",
-        "options": {
-          "created_at_desc": "按創建日期-倒序",
-          "created_at_asc": "按創建日期-正序",
-          "edited_at_desc": "按更新日期-倒序",
-          "edited_at_asc": "按更新日期-正序",
-          "visit_count_desc": "按訪問量（從多到少）",
-          "visit_count_asc": "按訪問量（從少到多）",
-          "manual": "手動排序"
-        }
       }
     }
   },
@@ -70,16 +73,45 @@
         "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
         "placeholder": "通常在這裡插入訪問統計、客服機器人等嵌入代碼"
       },
-      "header_menu_html": {
-        "label": "頂部導航區域插入 HTML 代碼",
-        "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
-        "placeholder": "通常在這裡插入公司其他網站的導航鏈接"
-      },
       "footer_menu_html": {
-        "label": "底部區域插入 HTML 代碼",
+        "label": "底部選單區域插入 HTML 代碼",
         "info": "支持HTML標籤和有限的TailwindCSS樣式代碼",
-        "placeholder": "通常在這裡插入公司其他網站的外部導航鏈接、友情鏈接、SEO 優化鏈接等"
+        "placeholder": "通常在這裡插入頁腳導航、友情鏈接、SEO 優化鏈接等"
       }
+    }
+  },
+  "legal_settings": {
+    "name": "Legal Hub 設置",
+    "brand_name": {
+      "label": "品牌名稱"
+    },
+    "home_intro": {
+      "label": "首頁簡介"
+    },
+    "supported_language_prefixes": {
+      "label": "支持的語言前綴",
+      "info": "英文逗號分隔，例如：en,zh"
+    },
+    "default_language_prefix": {
+      "label": "預設語言前綴"
+    },
+    "enable_locale_redirect": {
+      "label": "啟用 / 的 GeoIP 自動跳轉"
+    },
+    "geoip_api_url": {
+      "label": "GeoIP 介面地址",
+      "info": "返回包含 country_code/country 等欄位的 JSON。"
+    },
+    "home_categories_mode": {
+      "label": "分類展示樣式",
+      "choices": {
+        "cards": "卡片",
+        "accordion": "手風琴"
+      }
+    },
+    "legal_nav_items": {
+      "label": "自定義導航 HTML",
+      "info": "可選；設置後將覆蓋預設導航連結。"
     }
   }
 }

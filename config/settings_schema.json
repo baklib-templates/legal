@@ -65,15 +65,15 @@
     "name": "t:schema.generic.name",
     "settings": [
       {
+        "id": "logo_url",
+        "type": "text",
+        "label": "t:schema.generic.settings.logo_url.label",
+        "info": "t:schema.generic.settings.logo_url.info"
+      },
+      {
         "id": "is_allow_feedback",
         "type": "checkbox",
         "label": "t:schema.generic.settings.is_allow_feedback.label",
-        "default": true
-      },
-      {
-        "id": "is_show_visit_count",
-        "type": "checkbox",
-        "label": "t:schema.generic.settings.is_show_visit_count.label",
         "default": true
       },
       {

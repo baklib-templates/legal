@@ -4,17 +4,9 @@
   "templates": {
     "page": {
       "name": "Article Page",
-      "description": "Article page template",
       "settings": {
-        "title": {
-          "label": "Title",
-          "info": "Article title displayed above the content"
-        },
         "description": {
           "label": "Summary"
-        },
-        "tags": {
-          "label": "Tags"
         },
         "thumb_image_url": {
           "label": "Cover Image"
@@ -24,49 +16,52 @@
         }
       }
     },
-    "index_list": {
-      "name": "Home (list)",
-      "description": "List-style home with search and tag filters."
-    },
-    "index_card": {
-      "name": "Home (cards)",
-      "description": "Card grid home with sorting by publish date."
+    "index": {
+      "name": "Home (root)",
+      "description": "Root landing page with language chooser and search."
     },
     "index_side": {
       "name": "Home (side nav)",
-      "description": "Side-navigation home layout for legal hubs."
+      "description": "Side-navigation root landing layout."
+    },
+    "channel": {
+      "name": "Channel",
+      "description": "Channel page under a language root, listing its policies.",
+      "settings": {
+        "description": {
+          "label": "Summary"
+        }
+      }
+    },
+    "language": {
+      "name": "Language root",
+      "description": "Language root page listing channels.",
+      "settings": {
+        "description": {
+          "label": "Summary"
+        }
+      }
     },
     "language_side": {
       "name": "Language root (side nav)",
-      "description": "Side-navigation language root page layout."
+      "description": "Side-navigation language root layout."
     }
   },
   "generic": {
     "name": "General Settings",
     "settings": {
+      "logo_url": {
+        "label": "Logo image URL",
+        "info": "Optional. If set, the header shows this logo; otherwise the site favicon and name are shown."
+      },
       "is_allow_feedback": {
         "label": "Show User Feedback"
-      },
-      "is_show_visit_count": {
-        "label": "Show Visit Count"
       },
       "is_allow_header": {
         "label": "Show Header Section"
       },
       "is_allow_footer": {
         "label": "Show Footer Section"
-      },
-      "sort_rule": {
-        "label": "Home Page List Display Rules",
-        "options": {
-          "created_at_desc": "By Creation Date - Descending",
-          "created_at_asc": "By Creation Date - Ascending",
-          "edited_at_desc": "By Update Date - Descending",
-          "edited_at_asc": "By Update Date - Ascending",
-          "visit_count_desc": "By Visit Count (High to Low)",
-          "visit_count_asc": "By Visit Count (Low to High)",
-          "manual": "Manual Sort"
-        }
       }
     }
   },
@@ -78,45 +73,45 @@
         "info": "Supports HTML tags and limited TailwindCSS style code",
         "placeholder": "Usually used for analytics, customer service bot, etc."
       },
-      "header_menu_html": {
-        "label": "Insert HTML in Top Navigation Area",
-        "info": "Supports HTML tags and limited TailwindCSS style code",
-        "placeholder": "Usually used for company website navigation links"
-      },
       "footer_menu_html": {
-        "label": "Insert HTML in Footer Area",
+        "label": "Footer menu HTML",
         "info": "Supports HTML tags and limited TailwindCSS style code",
-        "placeholder": "Usually used for external navigation links, friend links, SEO optimization links, etc."
+        "placeholder": "Usually used for footer navigation, friend links, SEO links, etc."
       }
     }
-  }
-  ,
+  },
   "legal_settings": {
     "name": "Legal Hub Settings",
-    "settings": {
-      "brand_name": { "label": "Brand name" },
-      "home_intro": { "label": "Home intro" },
-      "supported_language_prefixes": {
-        "label": "Supported language prefixes",
-        "info": "Comma-separated, e.g. en,zh"
-      },
-      "default_language_prefix": { "label": "Default language prefix" },
-      "enable_locale_redirect": { "label": "Enable GeoIP redirect on /" },
-      "geoip_api_url": {
-        "label": "GeoIP API URL",
-        "info": "Returns a JSON object containing country_code/country fields."
-      },
-      "home_categories_mode": {
-        "label": "Categories layout",
-        "options": {
-          "cards": "Cards",
-          "accordion": "Accordion"
-        }
-      },
-      "legal_nav_items": {
-        "label": "Custom nav HTML",
-        "info": "Optional. If set, overrides default nav links."
+    "brand_name": {
+      "label": "Brand name"
+    },
+    "home_intro": {
+      "label": "Home intro"
+    },
+    "supported_language_prefixes": {
+      "label": "Supported language prefixes",
+      "info": "Comma-separated, e.g. en,zh"
+    },
+    "default_language_prefix": {
+      "label": "Default language prefix"
+    },
+    "enable_locale_redirect": {
+      "label": "Enable GeoIP redirect on /"
+    },
+    "geoip_api_url": {
+      "label": "GeoIP API URL",
+      "info": "Returns a JSON object containing country_code/country fields."
+    },
+    "home_categories_mode": {
+      "label": "Categories layout",
+      "choices": {
+        "cards": "Cards",
+        "accordion": "Accordion"
       }
+    },
+    "legal_nav_items": {
+      "label": "Custom nav HTML",
+      "info": "Optional. If set, overrides default nav links."
     }
   }
 }

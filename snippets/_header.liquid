@@ -5,15 +5,24 @@
     {% assign logo = 'images/logo.png' | asset_url %}
 
     <a href="{{ site.index_path }}" class="flex min-w-0 flex-1 items-center gap-2 md:flex-none md:max-w-[min(50%,20rem)] md:gap-3">
-      <span class="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-slate-50">
+      {% if site.settings.logo_url != blank %}
         <img
-          src="{{ site.favicon_url | default: logo }}"
-          alt=""
-          class="h-full w-full object-cover"
+          src="{{ site.settings.logo_url }}"
+          alt="{{ site.name }}"
+          class="h-9 w-auto max-w-full object-contain"
           onerror="this.onerror=null;this.src='{{ logo }}';"
         />
-      </span>
-      <span class="min-w-0 truncate text-base font-semibold tracking-tight text-slate-900 md:text-lg">{{ site.name }}</span>
+      {% else %}
+        <span class="flex h-9 w-9 shrink-0 items-center justify-center overflow-hidden rounded-full border border-slate-200 bg-slate-50">
+          <img
+            src="{{ site.favicon_url | default: logo }}"
+            alt=""
+            class="h-full w-full object-cover"
+            onerror="this.onerror=null;this.src='{{ logo }}';"
+          />
+        </span>
+        <span class="min-w-0 truncate text-base font-semibold tracking-tight text-slate-900 md:text-lg">{{ site.name }}</span>
+      {% endif %}
     </a>
 
     <div class="shrink-0 md:hidden">

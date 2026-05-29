@@ -4,17 +4,9 @@
   "templates": {
     "page": {
       "name": "記事ページ",
-      "description": "記事ページテンプレート",
       "settings": {
-        "title": {
-          "label": "タイトル",
-          "info": "コンテンツ上部に表示される記事タイトル"
-        },
         "description": {
           "label": "概要"
-        },
-        "tags": {
-          "label": "タグ"
         },
         "thumb_image_url": {
           "label": "カバー画像"
@@ -24,41 +16,52 @@
         }
       }
     },
-    "index_list": {
-      "name": "ホーム（リスト）",
-      "description": "検索とタグフィルター付きのリスト型ホーム。"
+    "index": {
+      "name": "ホーム（ルート）",
+      "description": "言語選択と検索を備えたルートランディングページ。"
     },
-    "index_card": {
-      "name": "ホーム（カード）",
-      "description": "公開日時で並べ替え可能なカードグリッド型ホーム。"
+    "index_side": {
+      "name": "ホーム（サイドナビ）",
+      "description": "サイドナビゲーション型のルートランディングレイアウト。"
+    },
+    "channel": {
+      "name": "チャンネル",
+      "description": "言語ルート配下のチャンネルページ。配下のポリシー文書を一覧表示します。",
+      "settings": {
+        "description": {
+          "label": "概要"
+        }
+      }
+    },
+    "language": {
+      "name": "言語ルート",
+      "description": "チャンネルを一覧表示する言語ルートページ。",
+      "settings": {
+        "description": {
+          "label": "概要"
+        }
+      }
+    },
+    "language_side": {
+      "name": "言語ルート（サイドナビ）",
+      "description": "サイドナビゲーション型の言語ルートレイアウト。"
     }
   },
   "generic": {
     "name": "一般設定",
     "settings": {
+      "logo_url": {
+        "label": "ロゴ画像URL",
+        "info": "任意。設定するとヘッダーにこのロゴを表示し、未設定の場合はサイトのファビコンと名称を表示します。"
+      },
       "is_allow_feedback": {
         "label": "ユーザーフィードバックを表示"
-      },
-      "is_show_visit_count": {
-        "label": "アクセス数を表示"
       },
       "is_allow_header": {
         "label": "ヘッダー部分を表示"
       },
       "is_allow_footer": {
         "label": "フッター部分を表示"
-      },
-      "sort_rule": {
-        "label": "ホームページリスト表示ルール",
-        "options": {
-          "created_at_desc": "作成日時 - 降順",
-          "created_at_asc": "作成日時 - 昇順",
-          "edited_at_desc": "更新日時 - 降順",
-          "edited_at_asc": "更新日時 - 昇順",
-          "visit_count_desc": "アクセス数（多い順）",
-          "visit_count_asc": "アクセス数（少ない順）",
-          "manual": "手動ソート"
-        }
       }
     }
   },
@@ -70,16 +73,45 @@
         "info": "HTMLタグと限定的なTailwindCSSスタイルコードをサポート",
         "placeholder": "通常、アクセス解析、カスタマーサービスボットなどを挿入"
       },
-      "header_menu_html": {
-        "label": "トップナビゲーション領域にHTMLを挿入",
-        "info": "HTMLタグと限定的なTailwindCSSスタイルコードをサポート",
-        "placeholder": "通常、会社の他のウェブサイトのナビゲーションリンクを挿入"
-      },
       "footer_menu_html": {
-        "label": "フッター領域にHTMLを挿入",
+        "label": "フッターメニュー領域にHTMLを挿入",
         "info": "HTMLタグと限定的なTailwindCSSスタイルコードをサポート",
-        "placeholder": "通常、外部ナビゲーションリンク、友情リンク、SEO最適化リンクなどを挿入"
+        "placeholder": "通常、フッターナビゲーション、友情リンク、SEOリンクなどを挿入"
       }
+    }
+  },
+  "legal_settings": {
+    "name": "Legal Hub 設定",
+    "brand_name": {
+      "label": "ブランド名"
+    },
+    "home_intro": {
+      "label": "ホーム紹介"
+    },
+    "supported_language_prefixes": {
+      "label": "対応言語プレフィックス",
+      "info": "カンマ区切り、例：en,zh"
+    },
+    "default_language_prefix": {
+      "label": "既定の言語プレフィックス"
+    },
+    "enable_locale_redirect": {
+      "label": "/ での GeoIP 自動リダイレクトを有効化"
+    },
+    "geoip_api_url": {
+      "label": "GeoIP APIアドレス",
+      "info": "country_code/country などのフィールドを含む JSON を返します。"
+    },
+    "home_categories_mode": {
+      "label": "カテゴリ表示スタイル",
+      "choices": {
+        "cards": "カード",
+        "accordion": "アコーディオン"
+      }
+    },
+    "legal_nav_items": {
+      "label": "カスタムナビゲーションHTML",
+      "info": "任意。設定すると既定のナビゲーションリンクを上書きします。"
     }
   }
 }

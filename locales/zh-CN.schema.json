@@ -4,17 +4,9 @@
   "templates": {
     "page": {
       "name": "文章页面",
-      "description": "文章页面模板",
       "settings": {
-        "title": {
-          "label": "标题",
-          "info": "显示在正文上方的文章标题"
-        },
         "description": {
           "label": "摘要"
-        },
-        "tags": {
-          "label": "标签"
         },
         "thumb_image_url": {
           "label": "封面图"
@@ -24,49 +16,52 @@
         }
       }
     },
-    "index_list": {
-      "name": "首页（列表）",
-      "description": "列表样式首页，含搜索与标签筛选。"
-    },
-    "index_card": {
-      "name": "首页（卡片）",
-      "description": "卡片网格样式首页，支持按发布时间排序。"
+    "index": {
+      "name": "首页（根）",
+      "description": "根路径 / 首页，含语言选择与搜索。"
     },
     "index_side": {
       "name": "首页（侧栏）",
-      "description": "适用于 Legal Hub 的侧栏导航首页布局。"
+      "description": "侧栏导航样式的根首页布局。"
+    },
+    "channel": {
+      "name": "栏目",
+      "description": "语言根下的栏目页，列出该栏目下的政策文档。",
+      "settings": {
+        "description": {
+          "label": "摘要"
+        }
+      }
+    },
+    "language": {
+      "name": "语言首页",
+      "description": "语言根页，列出各栏目。",
+      "settings": {
+        "description": {
+          "label": "摘要"
+        }
+      }
     },
     "language_side": {
       "name": "语言首页（侧栏）",
-      "description": "适用于 Legal Hub 的语言首页侧栏导航布局。"
+      "description": "侧栏导航样式的语言根布局。"
     }
   },
   "generic": {
     "name": "通用设置",
     "settings": {
+      "logo_url": {
+        "label": "LOGO 图片地址",
+        "info": "可选；填写后页头将展示该 LOGO，否则展示站点图标与站点名称。"
+      },
       "is_allow_feedback": {
         "label": "是否展示用户反馈"
-      },
-      "is_show_visit_count": {
-        "label": "是否展示访问量"
       },
       "is_allow_header": {
         "label": "是否展示页头Header部分"
       },
       "is_allow_footer": {
         "label": "是否展示页脚Footer部分"
-      },
-      "sort_rule": {
-        "label": "首页页面列表展示规则",
-        "options": {
-          "created_at_desc": "按创建日期-倒序",
-          "created_at_asc": "按创建日期-正序",
-          "edited_at_desc": "按更新日期-倒序",
-          "edited_at_asc": "按更新日期-正序",
-          "visit_count_desc": "按访问量（从多到少）",
-          "visit_count_asc": "按访问量（从少到多）",
-          "manual": "手动排序"
-        }
       }
     }
   },
@@ -78,45 +73,45 @@
         "info": "支持HTML标签和有限的TailwindCSS样式代码",
         "placeholder": "通常在这里插入访问统计、客服机器人等嵌入代码"
       },
-      "header_menu_html": {
-        "label": "顶部导航区域插入 HTML 代码",
-        "info": "支持HTML标签和有限的TailwindCSS样式代码",
-        "placeholder": "通常在这里插入公司其他网站的导航链接"
-      },
       "footer_menu_html": {
-        "label": "底部区域插入 HTML 代码",
+        "label": "底部菜单区域插入 HTML 代码",
         "info": "支持HTML标签和有限的TailwindCSS样式代码",
-        "placeholder": "通常在这里插入公司其他网站的外部导航链接、友情链接、SEO 优化链接等"
+        "placeholder": "通常在这里插入页脚导航、友情链接、SEO 优化链接等"
       }
     }
-  }
-  ,
+  },
   "legal_settings": {
     "name": "Legal Hub 设置",
-    "settings": {
-      "brand_name": { "label": "品牌名称" },
-      "home_intro": { "label": "首页简介" },
-      "supported_language_prefixes": {
-        "label": "支持的语言前缀",
-        "info": "英文逗号分隔，例如：en,zh"
-      },
-      "default_language_prefix": { "label": "默认语言前缀" },
-      "enable_locale_redirect": { "label": "启用 / 的 GeoIP 自动跳转" },
-      "geoip_api_url": {
-        "label": "GeoIP 接口地址",
-        "info": "返回包含 country_code/country 等字段的 JSON。"
-      },
-      "home_categories_mode": {
-        "label": "分类展示样式",
-        "options": {
-          "cards": "卡片",
-          "accordion": "手风琴"
-        }
-      },
-      "legal_nav_items": {
-        "label": "自定义导航 HTML",
-        "info": "可选；设置后将覆盖默认导航链接。"
+    "brand_name": {
+      "label": "品牌名称"
+    },
+    "home_intro": {
+      "label": "首页简介"
+    },
+    "supported_language_prefixes": {
+      "label": "支持的语言前缀",
+      "info": "英文逗号分隔，例如：en,zh"
+    },
+    "default_language_prefix": {
+      "label": "默认语言前缀"
+    },
+    "enable_locale_redirect": {
+      "label": "启用 / 的 GeoIP 自动跳转"
+    },
+    "geoip_api_url": {
+      "label": "GeoIP 接口地址",
+      "info": "返回包含 country_code/country 等字段的 JSON。"
+    },
+    "home_categories_mode": {
+      "label": "分类展示样式",
+      "choices": {
+        "cards": "卡片",
+        "accordion": "手风琴"
       }
+    },
+    "legal_nav_items": {
+      "label": "自定义导航 HTML",
+      "info": "可选；设置后将覆盖默认导航链接。"
     }
   }
 }
