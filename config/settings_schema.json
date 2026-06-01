@@ -8,13 +8,13 @@
     "theme_syntax_version": "v2",
     "theme_scope": "cms",
     "theme_author": "Baklib",
-    "theme_documentation_url": "https://help.baklib.cn/themes",
-    "theme_support_url": "https://help.baklib.cn/themes",
+    "theme_documentation_url": "https://www.github.com/baklib-templates/legal",
+    "theme_support_url": "https://www.github.com/baklib-templates/legal",
     "theme_thumb_url": "images/theme/thumb.png",
     "theme_preview_images": [
-      "images/theme/release-guide.png",
-      "images/theme/index-list.png",
-      "images/theme/page.png"
+      "images/theme/${lang}/cover.png",
+      "images/theme/${lang}/index_poster.png",
+      "images/theme/${lang}/page_poster.png"
     ],
     "theme_languages": [
       {

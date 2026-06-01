@@ -1,6 +1,6 @@
 {
-  "theme_label": "Legal Hub (정책 라이브러리)",
-  "theme_description": "법무·컴플라이언스용 정책 라이브러리 테마입니다. 이용약관, 개인정보 처리방침, Cookie, 허용 사용 정책, DPA 등 장문 문서에 적합하며 버전 관리와 업데이트 공지를 지원합니다.",
+  "theme_label": "Legal",
+  "theme_description": "정책 라이브러리: 법무·컴플라이언스용 정책 라이브러리 테마입니다. 이용약관, 개인정보 처리방침, Cookie, 허용 사용 정책, DPA 등 장문 문서에 적합하며 버전 관리와 업데이트 공지를 지원합니다.",
   "templates": {
     "page": {
       "name": "문서 페이지",

@@ -1,6 +1,6 @@
 {
-  "theme_label": "Legal Hub（政策文库）",
-  "theme_description": "面向法律与合规的政策文库主题，适用于服务条款、隐私政策、Cookie、可接受使用及数据处理附录等长文，支持版本与更新公告治理。",
+  "theme_label": "Legal",
+  "theme_description": "政策文库: 面向法律与合规的政策文库主题，适用于服务条款、隐私政策、Cookie、可接受使用及数据处理附录等长文，支持版本与更新公告治理。",
   "templates": {
     "page": {
       "name": "文章页面",

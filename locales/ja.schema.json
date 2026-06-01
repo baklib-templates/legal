@@ -1,6 +1,6 @@
 {
-  "theme_label": "Legal Hub（ポリシーライブラリ）",
-  "theme_description": "法務・コンプライアンス向けのポリシーライブラリテーマ。利用規約、プライバシー、Cookie、許容利用、DPA などの長文に適し、バージョン管理と更新告知に対応します。",
+  "theme_label": "Legal",
+  "theme_description": "ポリシーライブラリ: 法務・コンプライアンス向けのポリシーライブラリテーマ。利用規約、プライバシー、Cookie、許容利用、DPA などの長文に適し、バージョン管理と更新告知に対応します。",
   "templates": {
     "page": {
       "name": "記事ページ",
